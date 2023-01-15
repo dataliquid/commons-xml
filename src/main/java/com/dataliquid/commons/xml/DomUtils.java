@@ -10,6 +10,7 @@ import java.io.StringWriter;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -268,11 +269,11 @@ public class DomUtils
             short type = node.getNodeType();
             switch (type)
             {
-                case Node.ATTRIBUTE_NODE:
-                    break;
-                default:
-                    childrenToMove.add(node);
-                    break;
+            case Node.ATTRIBUTE_NODE:
+                break;
+            default:
+                childrenToMove.add(node);
+                break;
             }
         }
         Element result = appendElement(parent, element);
@@ -586,6 +587,19 @@ public class DomUtils
             }
         }
         return false;
+    }
+
+    public static List<String> getAttributeNames(Node node)
+    {
+        List<String> attrs = new LinkedList<String>();
+
+        NamedNodeMap attributes = node.getAttributes();
+        for (int i = 0; i < attributes.getLength(); i++)
+        {
+
+            attrs.add(attributes.item(i).getNodeName());
+        }
+        return attrs;
     }
 
     public static String getAttribute(Node node, String name)
