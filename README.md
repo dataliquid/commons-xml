@@ -58,7 +58,8 @@ public class DomUtilsExample {
         String xml = DomUtils.asXml(document);
         System.out.println("XML: " + xml);
     }
-}```
+}
+```
 
 This example demonstrates the usage of the `DomUtils` class to create an XML document, add a root element and a child element to it. Then, it retrieves and prints the text content of the child element.
 
