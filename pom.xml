@@ -24,7 +24,7 @@
 	</parent>
 	<groupId>com.dataliquid</groupId>
 	<artifactId>commons-xml</artifactId>
-	<version>1.0.1-SNAPSHOT</version>
+	<version>1.0.1</version>
 	<name>dataliquid :: Commons XML</name>
 
 	<organization>
