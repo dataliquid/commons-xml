@@ -65,6 +65,7 @@ This example demonstrates the usage of the `DomUtils` class to create an XML doc
 
 Please note that you need to add the `commons-xml` library to your project in order to use the `DomUtils` class.
 
+Follow this link, you will be taken to the [EXAMPLES.md](EXAMPLES.md) file where you can find more examples. These examples are intended to help you understand and utilize the functionality of the Commons-XML project.
 
 ## Contribution
 We welcome contributions to the commons-xml project! If you have found a bug, want to propose an improvement, or add a new feature, please follow these steps:
