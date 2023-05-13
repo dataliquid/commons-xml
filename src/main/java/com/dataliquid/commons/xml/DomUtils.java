@@ -1330,12 +1330,12 @@ public class DomUtils
     }
 
     /**
-     * Selects the child Nodes of the specified Node that are of type Node.TEXT_NODE.
+     * Selects the child Nodes of the specified Node.
      *
      * @param node the Node from which to select the child Nodes
-     * @return a List of child Nodes that are of type Node.TEXT_NODE
+     * @return a List of child Nodes
      */
-    public static List<Node> selectChildNotes(Node node)
+    public static List<Node> selectChildNodes(Node node)
     {
         return DomUtils.translateListOfNodes(node.getChildNodes());
     }
