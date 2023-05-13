@@ -42,19 +42,19 @@ import org.w3c.dom.Element;
 
 public class DomUtilsExample {
     public static void main(String[] args) {
-        // Create an empty XML document
+        // Create an empty XML document using DomUtils
         Document document = DomUtils.createDocument();
 
         // Create the root element
-        Element rootElement = document.createElement("root");
-        document.appendChild(rootElement);
+        Element rootElement = DomUtils.createElement(document, "root");
+        DomUtils.appendChild(document, rootElement);
 
         // Add a child element
-        Element childElement = document.createElement("child");
-        childElement.setTextContent("Hello, World!");
-        rootElement.appendChild(childElement);
+        Element childElement = DomUtils.createElement(document, "child");
+        DomUtils.setTextContent(childElement, "Hello, World!");
+        DomUtils.appendChild(rootElement, childElement);
 
-        // Represent the document as xml string
+        // Represent the document as xml string using DomUtils
         String xml = DomUtils.asXml(document);
         System.out.println("XML: " + xml);
     }
