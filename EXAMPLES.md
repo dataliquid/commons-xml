@@ -9,9 +9,8 @@ import com.dataliquid.commons.xml.DomUtils;
 
 String xmlString = "<root><element>Value</element></root>";
 
-
-    Document document = DomUtils.parse(xmlString);
-    // You can further process the parsed Document object here
+Document document = DomUtils.parse(xmlString);
+// You can further process the parsed Document object here
 ```
 
 ## Example of using `DomUtils.insertElement(Node, Element, List<String>)`
