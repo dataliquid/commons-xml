@@ -61,7 +61,7 @@ public class DomUtilsExample {
 }
 ```
 
-This example demonstrates the usage of the `DomUtils` class to create an XML document, add a root element and a child element to it. Then, it retrieves and prints the text content of the child element.
+This example demonstrates the usage of the `DomUtils` class to create an XML document, add a root element and a child element to it. Then, it retrieves the xml as string and print it out.
 
 Please note that you need to add the `commons-xml` library to your project in order to use the `DomUtils` class.
 
