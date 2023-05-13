@@ -1,3 +1,18 @@
+/**
+ * Copyright © 2019 dataliquid GmbH | www.dataliquid.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.dataliquid.commons.xml.ns;
 
 import java.util.ArrayList;
@@ -8,6 +23,9 @@ import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 
+/**
+ * A default implementation of the NamespaceContext interface.
+ */
 public class DefaultNamespaceContext implements javax.xml.namespace.NamespaceContext
 {
     public static final String NAMESPACE_XS = "http://www.w3.org/2001/XMLSchema";
@@ -42,12 +60,24 @@ public class DefaultNamespaceContext implements javax.xml.namespace.NamespaceCon
         }
     }
 
+    /**
+     * Get the namespace URI bound to the given prefix in the current scope.
+     *
+     * @param prefix the prefix for which to retrieve the namespace URI
+     * @return the namespace URI bound to the given prefix, or the DEFAULT_NS if not found
+     */
     @Override
     public String getNamespaceURI(String prefix)
     {
         return StringUtils.isEmpty(prefix) ? DEFAULT_NS : alias.get(prefix);
     }
 
+    /**
+     * Get the prefix bound to the given namespace URI in the current scope.
+     *
+     * @param namespaceURI the namespace URI for which to retrieve the prefix
+     * @return the prefix bound to the given namespace URI, or null if not found
+     */
     @Override
     public String getPrefix(String namespaceURI)
     {
@@ -55,6 +85,12 @@ public class DefaultNamespaceContext implements javax.xml.namespace.NamespaceCon
         return prefixes.hasNext() ? (String) prefixes.next() : null;
     }
 
+    /**
+     * Get all prefixes bound to a namespace URI in the current scope.
+     *
+     * @param namespaceURI the namespace URI for which to retrieve the prefixes
+     * @return an Iterator over all prefixes bound to the namespace URI
+     */
     @Override
     public Iterator<?> getPrefixes(String namespaceURI)
     {
