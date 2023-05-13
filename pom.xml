@@ -1,9 +1,35 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.dataliquid</groupId>
+		<artifactId>parent-oss</artifactId>
+		<version>1.1.0</version>
+	</parent>
 	<groupId>com.dataliquid</groupId>
 	<artifactId>commons-xml</artifactId>
 	<version>1.0.1-SNAPSHOT</version>
 	<name>dataliquid :: Commons XML</name>
+
+	<organization>
+		<name>dataliquid GmbH</name>
+		<url>www.dataliquid.com</url>
+	</organization>
+
+	<inceptionYear>2019</inceptionYear>
+
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+		</license>
+	</licenses>
+	
+	<developers>
+		<developer>
+			<name>GitHub Developer Team</name>
+			<organization>dataliquid GmbH</organization>
+			<organizationUrl>www.dataliquid.com</organizationUrl>
+		</developer>
+	</developers>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -52,18 +78,53 @@
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>com.mycila</groupId>
+				<artifactId>license-maven-plugin</artifactId>
+				<configuration>
+					<header>https://raw.githubusercontent.com/dataliquid/parent-oss/1.0.0/src/main/resources/licence/APACHE-2.tmpl.txt</header>
+					<properties>
+						<owner>dataliquid GmbH</owner>
+						<website>www.dataliquid.com</website>
+					</properties>
+					<excludes>
+						<exclude>LICENSE</exclude>
+					</excludes>
+				</configuration>
+				<executions>
+					<execution>
+						<id>license-check</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.3</version>
 				<configuration>
 					<source>1.7</source>
 					<target>1.7</target>
 				</configuration>
 			</plugin>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.4</version>
+				<executions>
+					<execution>
+						<id />
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
 				<groupId>external.atlassian.jgitflow</groupId>
 				<artifactId>jgitflow-maven-plugin</artifactId>
-				<version>1.0-m5.1</version>
 				<configuration>
 					<flowInitContext>
 						<masterBranchName>master</masterBranchName>
