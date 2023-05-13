@@ -74,7 +74,7 @@ public class DomUtils
     /**
      * Parses the given XML string and returns a Document object representing the parsed XML.
      *
-     * @param xmlString the XML string to parse
+     * @param xml the XML string to parse
      * @return the parsed Document object
      * @throws ParserConfigurationException if a DocumentBuilder cannot be created
      * @throws IOException                  if an I/O error occurs
@@ -489,7 +489,7 @@ public class DomUtils
      * @param removeWhitespace a boolean indicating whether to remove whitespace-only Text nodes during deletion
      * @param namespaceContext optional NamespaceContext for resolving namespace prefixes in the XPath expression
      */
-    public static void delete(Node node, String xpath, boolean removeWitheSpace, NamespaceContext... namespaceContext)
+    public static void delete(Node node, String xpath, boolean removeWhitespace, NamespaceContext... namespaceContext)
     {
         List<Node> nodes = selectNodes(node, xpath, namespaceContext);
         delete(nodes);
