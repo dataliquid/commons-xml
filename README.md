@@ -40,7 +40,7 @@ import com.dataliquid.commons.xml.DomUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public class DomUtilsExample {
+public class Example {
     public static void main(String[] args) {
         // Create an empty XML document using DomUtils
         Document document = DomUtils.createDocument();
