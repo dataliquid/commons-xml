@@ -20,7 +20,7 @@ To use the `commons-xml` library in your project, you can add it as a Maven depe
         <artifactId>commons-xml</artifactId>
         <version>1.0.0</version>
     </dependency>
-</dependencies>
+</dependencies>```
 
 ## Example
 
