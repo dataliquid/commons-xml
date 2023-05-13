@@ -18,7 +18,7 @@ To use the `commons-xml` library in your project, you can add it as a Maven depe
     <dependency>
         <groupId>com.dataliquid.commons</groupId>
         <artifactId>commons-xml</artifactId>
-        <version>1.0.1</version>
+        <version>1.0.2</version>
     </dependency>
 </dependencies>
 ```
