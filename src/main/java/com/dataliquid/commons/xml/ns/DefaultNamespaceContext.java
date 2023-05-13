@@ -8,6 +8,9 @@ import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 
+/**
+ * A default implementation of the NamespaceContext interface.
+ */
 public class DefaultNamespaceContext implements javax.xml.namespace.NamespaceContext
 {
     public static final String NAMESPACE_XS = "http://www.w3.org/2001/XMLSchema";
@@ -42,12 +45,24 @@ public class DefaultNamespaceContext implements javax.xml.namespace.NamespaceCon
         }
     }
 
+    /**
+     * Get the namespace URI bound to the given prefix in the current scope.
+     *
+     * @param prefix the prefix for which to retrieve the namespace URI
+     * @return the namespace URI bound to the given prefix, or the DEFAULT_NS if not found
+     */
     @Override
     public String getNamespaceURI(String prefix)
     {
         return StringUtils.isEmpty(prefix) ? DEFAULT_NS : alias.get(prefix);
     }
 
+    /**
+     * Get the prefix bound to the given namespace URI in the current scope.
+     *
+     * @param namespaceURI the namespace URI for which to retrieve the prefix
+     * @return the prefix bound to the given namespace URI, or null if not found
+     */
     @Override
     public String getPrefix(String namespaceURI)
     {
@@ -55,6 +70,12 @@ public class DefaultNamespaceContext implements javax.xml.namespace.NamespaceCon
         return prefixes.hasNext() ? (String) prefixes.next() : null;
     }
 
+    /**
+     * Get all prefixes bound to a namespace URI in the current scope.
+     *
+     * @param namespaceURI the namespace URI for which to retrieve the prefixes
+     * @return an Iterator over all prefixes bound to the namespace URI
+     */
     @Override
     public Iterator<?> getPrefixes(String namespaceURI)
     {
