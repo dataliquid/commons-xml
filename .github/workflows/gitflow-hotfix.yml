@@ -15,9 +15,13 @@ on:
         required: true
         type: string
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   hotfix:
-    uses: dataliquid/github-actions/.github/workflows/gitflow-hotfix.yml@main
+    uses: dataliquid/github-actions/.github/workflows/gitflow-hotfix.yml@1.0.0
     with:
       action: ${{ inputs.action }}
       version: ${{ inputs.version }}
