@@ -81,8 +81,8 @@ public class DefaultNamespaceContext implements javax.xml.namespace.NamespaceCon
     @Override
     public String getPrefix(String namespaceURI)
     {
-        Iterator<?> prefixes = getPrefixes(namespaceURI);
-        return prefixes.hasNext() ? (String) prefixes.next() : null;
+        Iterator<String> prefixes = getPrefixes(namespaceURI);
+        return prefixes.hasNext() ? prefixes.next() : null;
     }
 
     /**
@@ -92,8 +92,9 @@ public class DefaultNamespaceContext implements javax.xml.namespace.NamespaceCon
      * @return an Iterator over all prefixes bound to the namespace URI
      */
     @Override
-    public Iterator<?> getPrefixes(String namespaceURI)
+    public Iterator<String> getPrefixes(String namespaceURI)
     {
-        return uri.get(namespaceURI).iterator();
+        Collection<String> prefixes = uri.get(namespaceURI);
+        return prefixes != null ? prefixes.iterator() : new ArrayList<String>().iterator();
     }
 }
