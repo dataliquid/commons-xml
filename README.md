@@ -4,45 +4,41 @@
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.dataliquid/commons-xml/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.dataliquid/commons-xml)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Welcome to the `commons-xml` project! This repository contains a Java library that provides various utility classes and functions for working with XML documents. The library is designed to make common tasks related to XML processing and manipulation easier.
+A lightweight and efficient Java library for XML processing and manipulation. This library provides comprehensive utilities for parsing, creating, validating, and transforming XML documents with a focus on simplicity and performance.
 
 ## Features
 
-- **XML Parsing**: The library provides an easy way to parse XML documents and convert them into a structured data format.
-- **XML Creation**: You can programmatically create XML documents while maintaining the desired structure and hierarchy.
-- **XPath Support**: The library allows you to use XPath expressions to selectively access specific elements or attributes in an XML document.
-- **Validation**: You can validate XML documents against an XML schema and ensure they adhere to the specified rules.
+- **XML Parsing**: Easy-to-use utilities for parsing XML documents from files, resources, or strings
+- **XML Creation**: Programmatic XML document creation with fluent API
+- **XPath Support**: Advanced XPath expression support with namespace handling
+- **Schema Validation**: Validate XML documents against XSD schemas
+- **DOM Manipulation**: Comprehensive DOM utilities for working with XML elements and attributes
+- **Namespace Support**: Built-in namespace context management for complex XML documents
 
 ## Requirements
 
 - Java 8 or higher (supports Java 8, 11, 17, and 21)
 - Maven 3.6 or higher
 
-## Usage
+## Installation
 
-To use the `commons-xml` library in your project, you can add it as a Maven dependency. Add the following section to your `pom.xml` file:
-
+### Maven
 ```xml
-<dependencies>
-    <dependency>
-        <groupId>com.dataliquid</groupId>
-        <artifactId>commons-xml</artifactId>
-        <version>1.0.2</version>
-    </dependency>
-</dependencies>
+<dependency>
+    <groupId>com.dataliquid</groupId>
+    <artifactId>commons-xml</artifactId>
+    <version>1.1.0</version>
+</dependency>
 ```
 
-## Example
+### Gradle
+```gradle
+implementation 'com.dataliquid:commons-xml:1.1.0'
+```
 
-The given example utilizes the DomUtils class from the commons-xml library to create and manipulate an XML document. It performs the following steps:
+## Quick Start
 
-- Creates an empty XML document using DomUtils.createDocument().
-- Creates a root element named "root" and adds it to the document.
-- Creates a child element named "child" and sets its text content to "Hello, World!". The child element is appended to the root element.
-- Converts the document to an XML string representation using DomUtils.asXml(document).
-- Prints the generated XML string to the console.
-
-In summary, this example demonstrates how to create an XML document, add elements to it, and obtain the XML representation of the document using the DomUtils class.
+Here's a simple example demonstrating XML document creation and manipulation:
 
 ```java
 import com.dataliquid.commons.xml.DomUtils;
@@ -70,11 +66,7 @@ public class Example {
 }
 ```
 
-This example demonstrates the usage of the `DomUtils` class to create an XML document, add a root element and a child element to it. Then, it retrieves the xml as string and print it out.
-
-Please note that you need to add the `commons-xml` library to your project in order to use the `DomUtils` class.
-
-Follow this link, you will be taken to the [EXAMPLES.md](EXAMPLES.md) file where you can find more examples. These examples are intended to help you understand and utilize the functionality of the Commons-XML project.
+For more detailed examples including XPath queries, namespace handling, and schema validation, see [EXAMPLES.md](EXAMPLES.md).
 
 ## Building from Source
 
