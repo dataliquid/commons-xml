@@ -1104,7 +1104,16 @@ public class DomUtils
 
         StringWriter writer = new StringWriter();
         write(node, writer, outputProperties);
-        return writer.toString();
+        String result = writer.toString();
+        
+        // Saxon 12+ adds a trailing newline when indenting is enabled, which wasn't present in Saxon 9.6
+        // To maintain backward compatibility, we remove it if present
+        if (indent && result.endsWith("\n"))
+        {
+            result = result.substring(0, result.length() - 1);
+        }
+        
+        return result;
 
     }
 
