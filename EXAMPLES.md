@@ -2,6 +2,34 @@
 
 This document provides comprehensive examples of using the commons-xml library for various XML processing tasks. The library's main utility class, `DomUtils`, offers a wide range of methods for parsing, manipulating, validating, and querying XML documents.
 
+## Table of Contents
+
+- [Parsing XML](#parsing-xml)
+  - [Parse XML from String](#parse-xml-from-string)
+  - [Parse XML from File](#parse-xml-from-file)
+  - [Parse XML from Resource](#parse-xml-from-resource)
+- [DOM Manipulation](#dom-manipulation)
+  - [Insert Element with Ordering](#insert-element-with-ordering)
+  - [Insert Element Before Reference Node](#insert-element-before-reference-node)
+  - [Insert Element After Reference Node](#insert-element-after-reference-node)
+  - [Delete Multiple Nodes](#delete-multiple-nodes)
+- [XPath Queries](#xpath-queries)
+  - [Select String Value with XPath](#select-string-value-with-xpath)
+  - [Select Child Nodes](#select-child-nodes)
+  - [XPath with Multiple Results](#xpath-with-multiple-results)
+- [Node Operations](#node-operations)
+  - [Copy Attributes Between Elements](#copy-attributes-between-elements)
+  - [Copy Children Between Elements](#copy-children-between-elements)
+  - [Rename Node](#rename-node)
+- [Validation](#validation)
+  - [Validate Document Against Schema](#validate-document-against-schema)
+  - [Schema Validation with Error Handling](#schema-validation-with-error-handling)
+- [Serialization](#serialization)
+  - [Convert Node to XML String](#convert-node-to-xml-string)
+- [Additional Examples](#additional-examples)
+  - [Working with Namespaces](#working-with-namespaces)
+  - [Create Document with Elements](#create-document-with-elements)
+
 ## Parsing XML
 
 ### Parse XML from String
