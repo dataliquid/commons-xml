@@ -27,10 +27,10 @@ jobs:
         cache: maven
     
     - name: Build with Maven
-      run: mvn clean compile -Dgpg.skip=true
+      run: mvn --batch-mode --no-transfer-progress clean compile -Dgpg.skip=true
     
     - name: Run tests
-      run: mvn test -Dgpg.skip=true
+      run: mvn --batch-mode --no-transfer-progress test -Dgpg.skip=true
     
     - name: Verify
-      run: mvn verify -Dgpg.skip=true
+      run: mvn --batch-mode --no-transfer-progress verify -Dgpg.skip=true
