@@ -54,7 +54,9 @@ import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
 import org.apache.commons.io.IOUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.w3c.dom.Attr;
 import org.w3c.dom.CDATASection;
 import org.w3c.dom.Comment;
@@ -86,14 +88,14 @@ public class DomUtilsTest
         assertThat(document.getElementsByTagName("element").item(0).getTextContent(), equalTo("Value"));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testParseInvalid()
     {
         // Given
         String xml = "no xml content";
 
-        // When
-        DomUtils.parse(xml);
+        // When & Then
+        assertThrows(IllegalArgumentException.class, () -> DomUtils.parse(xml));
     }
 
     @Test
@@ -128,17 +130,14 @@ public class DomUtilsTest
         assertThat(document.getElementsByTagName("element").item(0).getTextContent(), equalTo("Value"));
     }
 
-    @Test(expected = FileNotFoundException.class)
-    public void testParseFileNotFound() throws FileNotFoundException
+    @Test
+    public void testParseFileNotFound()
     {
         // Given
         File nonExistentFile = new File("path/to/nonexistent.xml");
 
-        // When
-        DomUtils.parse(nonExistentFile);
-
-        // Then
-        // Expecting FileNotFoundException to be thrown
+        // When & Then
+        assertThrows(FileNotFoundException.class, () -> DomUtils.parse(nonExistentFile));
     }
 
     @Test
@@ -157,17 +156,14 @@ public class DomUtilsTest
         assertThat(document.getElementsByTagName("element").item(0).getTextContent(), equalTo("Value"));
     }
 
-    @Test(expected = FileNotFoundException.class)
-    public void testParseFileWithNamespaceAwareNotFound() throws FileNotFoundException
+    @Test
+    public void testParseFileWithNamespaceAwareNotFound()
     {
         // Given
         File nonExistentFile = new File("path/to/nonexistent.xml");
 
-        // When
-        DomUtils.parse(nonExistentFile, true);
-
-        // Then
-        // Expecting FileNotFoundException to be thrown
+        // When & Then
+        assertThrows(FileNotFoundException.class, () -> DomUtils.parse(nonExistentFile, true));
     }
 
     @Test
@@ -1009,7 +1005,7 @@ public class DomUtilsTest
         assertThat(rootElement2.getNamespaceURI(), is("http://example.com"));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testEnforceNoNamespaceMixesFails() throws Exception
     {
         // Given
@@ -1020,12 +1016,8 @@ public class DomUtilsTest
         Element rootElement1 = document1.getDocumentElement();
         Element rootElement2 = document2.getDocumentElement();
 
-        // When
-        DomUtils.enforceNoNamespaceMixes(rootElement1, rootElement2);
-
-        // Then
-        assertThat(rootElement1.getNamespaceURI(), is("http://example.com"));
-        assertThat(rootElement2.getNamespaceURI(), is("http://example.org"));
+        // When & Then
+        assertThrows(IllegalArgumentException.class, () -> DomUtils.enforceNoNamespaceMixes(rootElement1, rootElement2));
     }
 
     @Test
