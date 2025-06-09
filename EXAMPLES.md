@@ -1,8 +1,10 @@
-# Examples
+# Commons-XML Examples
 
-In the following examples, we showcase how DomUtils, a utility class in the commons-xml project, can be utilized to simplify XML processing tasks. DomUtils provides convenient methods and functionalities for tasks such as parsing XML, manipulating nodes, validating documents, and extracting information using XPath expressions. Through these code snippets, you will gain insights into how to effectively use DomUtils to insert elements, copy attributes and children, rename nodes, convert nodes to XML strings, and more.
+This document provides comprehensive examples of using the commons-xml library for various XML processing tasks. The library's main utility class, `DomUtils`, offers a wide range of methods for parsing, manipulating, validating, and querying XML documents.
 
-## Example of using `DomUtils.parse(String)`
+## Parsing XML
+
+### Parse XML from String
 
 ```java
 import com.dataliquid.commons.xml.DomUtils;
@@ -13,7 +15,9 @@ Document document = DomUtils.parse(xmlString);
 // You can further process the parsed Document object here
 ```
 
-## Example of using `DomUtils.insertElement(Node, Element, List<String>)`
+## DOM Manipulation
+
+### Insert Element with Ordering
 
 ```java
 import org.w3c.dom.Element;
@@ -32,7 +36,7 @@ Element insertedElement = DomUtils.insertElement(parentNode, elementToInsert, or
 // You can further process the insertedElement here
 ```
 
-## Example of using `DomUtils.insertElementBefore(Node, Element)`
+### Insert Element Before Reference Node
 
 ```java
 import org.w3c.dom.Element;
@@ -47,7 +51,7 @@ Element insertedElement = DomUtils.insertElementBefore(referenceNode, elementToI
 // The method inserts the Element before the reference Node and returns the inserted Element
 ```
 
-## Example of using `DomUtils.insertElementAfter(Node, Element)`
+### Insert Element After Reference Node
 
 ```java
 import org.w3c.dom.Element;
@@ -62,7 +66,7 @@ Element insertedElement = DomUtils.insertElementAfter(referenceNode, elementToIn
 // The method inserts the Element after the reference Node and returns the inserted Element
 ```
 
-## Example of using `DomUtils.delete(List<Node>)`
+### Delete Multiple Nodes
 
 ```java
 import org.w3c.dom.Node;
@@ -75,7 +79,9 @@ DomUtils.delete(nodesToDelete);
 // The nodes in the list are deleted from their parent nodes
 ```
 
-## Example of using `DomUtils.selectString(Node, String)`
+## XPath Queries
+
+### Select String Value with XPath
 
 ```java
 import org.w3c.dom.Node;
@@ -91,7 +97,7 @@ String selectedString = DomUtils.selectString(node, xpath);
 // You can further process the selectedString here
 ```
 
-## Example of using `DomUtils.selectChildNodes(Node)`
+### Select Child Nodes
 
 ```java
 import org.w3c.dom.Node;
@@ -106,7 +112,9 @@ List<Node> childNodes = DomUtils.selectChildNodes(parentNode);
 // You can further process the childNodes list here
 ```
 
-## Example of using `DomUtils.copyAttributes(Element, Element)`
+## Node Operations
+
+### Copy Attributes Between Elements
 
 ```java
 import org.w3c.dom.Element;
@@ -120,7 +128,7 @@ DomUtils.copyAttributes(sourceElement, destinationElement);
 // The method copies the attributes from the source element to the destination element
 ```
 
-## Example of using `DomUtils.copyChildren(Element, Element)`
+### Copy Children Between Elements
 
 ```java
 import org.w3c.dom.Element;
@@ -134,7 +142,7 @@ DomUtils.copyChildren(sourceElement, destinationElement);
 // The method copies the children nodes from the source element to the destination element
 ```
 
-## Example of using `DomUtils.renameNode(Node, String)`
+### Rename Node
 
 ```java
 import org.w3c.dom.Node;
@@ -148,7 +156,9 @@ Node renamedNode = DomUtils.renameNode(node, newName);
 // The method renames the node with the new name and returns the renamed node
 ```
 
-## Example of using `DomUtils.validate(Document, Schema)`
+## Validation
+
+### Validate Document Against Schema
 
 ```java
 import org.w3c.dom.Document;
@@ -171,7 +181,9 @@ if (isValid) {
 }
 ```
 
-## Example of using `DomUtils.asXml(Node, boolean)`
+## Serialization
+
+### Convert Node to XML String
 
 ```java
 import org.w3c.dom.Node;
@@ -185,4 +197,108 @@ String xmlString = DomUtils.asXml(node, indent);
 // The method converts the Node to its XML representation as a String
 
 // You can further process the xmlString here
+```
+
+## Additional Examples
+
+### Parse XML from File
+
+```java
+import com.dataliquid.commons.xml.DomUtils;
+import java.io.File;
+
+File xmlFile = new File("path/to/your/file.xml");
+Document document = DomUtils.parse(xmlFile);
+```
+
+### Parse XML from Resource
+
+```java
+import com.dataliquid.commons.xml.DomUtils;
+
+// Parse XML from classpath resource
+Document document = DomUtils.parseResource("xml/config.xml");
+```
+
+### Working with Namespaces
+
+```java
+import com.dataliquid.commons.xml.DomUtils;
+import com.dataliquid.commons.xml.ns.DefaultNamespaceContext;
+import javax.xml.namespace.NamespaceContext;
+
+// Create namespace context
+DefaultNamespaceContext nsContext = new DefaultNamespaceContext();
+nsContext.addNamespace("ns", "http://example.com/namespace");
+
+// Use namespace in XPath queries
+Node node = ...; // Your node
+String value = DomUtils.selectString(node, "//ns:element/text()", nsContext);
+```
+
+### Create Document with Elements
+
+```java
+import com.dataliquid.commons.xml.DomUtils;
+import org.w3c.dom.*;
+
+// Create new document
+Document doc = DomUtils.createDocument();
+
+// Create root element with namespace
+Element root = DomUtils.createElement(doc, "root", "http://example.com/ns");
+doc.appendChild(root);
+
+// Add child elements
+Element child = DomUtils.createElement(doc, "child");
+DomUtils.setTextContent(child, "Some content");
+root.appendChild(child);
+
+// Add attributes
+DomUtils.setAttribute(child, "id", "123");
+DomUtils.setAttribute(child, "type", "example");
+```
+
+### XPath with Multiple Results
+
+```java
+import com.dataliquid.commons.xml.DomUtils;
+import org.w3c.dom.NodeList;
+
+Document doc = ...; // Your document
+NodeList nodes = DomUtils.selectNodes(doc, "//item[@active='true']");
+
+for (int i = 0; i < nodes.getLength(); i++) {
+    Node node = nodes.item(i);
+    String value = DomUtils.getTextContent(node);
+    System.out.println("Item value: " + value);
+}
+```
+
+### Schema Validation with Error Handling
+
+```java
+import com.dataliquid.commons.xml.DomUtils;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.XMLConstants;
+import java.io.File;
+
+try {
+    // Load schema
+    SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+    Schema schema = factory.newSchema(new File("schema.xsd"));
+    
+    // Validate document
+    Document document = DomUtils.parse(new File("document.xml"));
+    boolean isValid = DomUtils.validate(document, schema);
+    
+    if (isValid) {
+        System.out.println("Document is valid");
+    } else {
+        System.out.println("Document validation failed");
+    }
+} catch (Exception e) {
+    System.err.println("Validation error: " + e.getMessage());
+}
 ```
