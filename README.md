@@ -27,13 +27,13 @@ A lightweight and efficient Java library for XML processing and manipulation. Th
 <dependency>
     <groupId>com.dataliquid</groupId>
     <artifactId>commons-xml</artifactId>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
 </dependency>
 ```
 
 ### Gradle
 ```gradle
-implementation 'com.dataliquid:commons-xml:1.1.0'
+implementation 'com.dataliquid:commons-xml:1.2.0'
 ```
 
 ## Quick Start
