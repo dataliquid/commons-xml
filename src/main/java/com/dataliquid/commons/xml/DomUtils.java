@@ -312,8 +312,8 @@ public class DomUtils
      * @param documentElement
      *            the document element node to set as the root of the document
      * @return the newly created Document object
-     * @throws ParserConfigurationException
-     *             if a DocumentBuilder cannot be created
+     * @throws IllegalArgumentException
+     *             if the document cannot be created
      */
     public static Document createDocument(Node documentElement)
     {
@@ -1360,8 +1360,8 @@ public class DomUtils
      *            the Writer to which the XML should be written
      * @param outputProperties
      *            the properties specifying the output format of the XML
-     * @throws IOException
-     *             if an I/O error occurs while writing to the Writer
+     * @throws IllegalArgumentException
+     *             if the XML cannot be written
      */
     public static void write(Node node, Writer writer, Properties outputProperties)
     {
