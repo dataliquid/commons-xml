@@ -93,12 +93,8 @@ public class DomUtils
      * @param xml
      *            the XML string to parse
      * @return the parsed Document object
-     * @throws ParserConfigurationException
-     *             if a DocumentBuilder cannot be created
-     * @throws IOException
-     *             if an I/O error occurs
-     * @throws SAXException
-     *             if any parse errors occur
+     * @throws IllegalArgumentException
+     *             if the XML cannot be parsed
      */
     public static Document parse(String xml)
     {
@@ -114,12 +110,8 @@ public class DomUtils
      * @param namespaceAware
      *            a boolean indicating whether the parser should be namespace aware
      * @return the parsed Document object
-     * @throws ParserConfigurationException
-     *             if a DocumentBuilder cannot be created
-     * @throws IOException
-     *             if an I/O error occurs
-     * @throws SAXException
-     *             if any parse errors occur
+     * @throws IllegalArgumentException
+     *             if the XML cannot be parsed
      */
     public static Document parse(String xml, boolean namespaceAware)
     {
@@ -142,12 +134,8 @@ public class DomUtils
      * @return the parsed Document object
      * @throws FileNotFoundException
      *             if the specified file does not exist
-     * @throws ParserConfigurationException
-     *             if a DocumentBuilder cannot be created
-     * @throws IOException
-     *             if an I/O error occurs
-     * @throws SAXException
-     *             if any parse errors occur
+     * @throws IllegalArgumentException
+     *             if the XML cannot be parsed
      */
     public static Document parse(File file) throws FileNotFoundException
     {
@@ -165,12 +153,8 @@ public class DomUtils
      * @return the parsed Document object
      * @throws FileNotFoundException
      *             if the specified file does not exist
-     * @throws ParserConfigurationException
-     *             if a DocumentBuilder cannot be created
-     * @throws IOException
-     *             if an I/O error occurs
-     * @throws SAXException
-     *             if any parse errors occur
+     * @throws IllegalArgumentException
+     *             if the XML cannot be parsed
      */
     public static Document parse(File file, boolean namespaceAware) throws FileNotFoundException
     {
@@ -184,12 +168,8 @@ public class DomUtils
      * @param inputStream
      *            the InputStream containing the XML data to parse
      * @return the parsed Document object
-     * @throws ParserConfigurationException
-     *             if a DocumentBuilder cannot be created
-     * @throws IOException
-     *             if an I/O error occurs
-     * @throws SAXException
-     *             if any parse errors occur
+     * @throws IllegalArgumentException
+     *             if the XML cannot be parsed
      */
     public static Document parse(InputStream inputStream)
     {
@@ -205,12 +185,8 @@ public class DomUtils
      * @param namespaceAware
      *            a boolean indicating whether the parser should be namespace aware
      * @return the parsed Document object
-     * @throws ParserConfigurationException
-     *             if a DocumentBuilder cannot be created
-     * @throws IOException
-     *             if an I/O error occurs
-     * @throws SAXException
-     *             if any parse errors occur
+     * @throws IllegalArgumentException
+     *             if the XML cannot be parsed
      */
     public static Document parse(InputStream inputStream, boolean namespaceAware)
     {
@@ -234,12 +210,8 @@ public class DomUtils
      * @param name
      *            the name of the XML resource to parse
      * @return the parsed Document object
-     * @throws ParserConfigurationException
-     *             if a DocumentBuilder cannot be created
-     * @throws IOException
-     *             if an I/O error occurs
-     * @throws SAXException
-     *             if any parse errors occur
+     * @throws IllegalArgumentException
+     *             if the resource cannot be found or parsed
      */
     public static Document parseResource(String name)
     {
@@ -255,12 +227,8 @@ public class DomUtils
      * @param namespaceAware
      *            a boolean indicating whether the parser should be namespace aware
      * @return the parsed Document object
-     * @throws ParserConfigurationException
-     *             if a DocumentBuilder cannot be created
-     * @throws IOException
-     *             if an I/O error occurs
-     * @throws SAXException
-     *             if any parse errors occur
+     * @throws IllegalArgumentException
+     *             if the resource cannot be found or parsed
      */
     public static Document parseResource(String name, boolean namespaceAware)
     {
@@ -280,8 +248,8 @@ public class DomUtils
      * @param name
      *            the name of the document element
      * @return the newly created Document object
-     * @throws ParserConfigurationException
-     *             if a DocumentBuilder cannot be created
+     * @throws IllegalArgumentException
+     *             if the document cannot be created
      */
     public static Document createDocument(String name)
     {
@@ -297,8 +265,8 @@ public class DomUtils
      * @param namespaceUri
      *            the namespace URI of the document element
      * @return the newly created Document object
-     * @throws ParserConfigurationException
-     *             if a DocumentBuilder cannot be created
+     * @throws IllegalArgumentException
+     *             if the document cannot be created
      */
     public static Document createDocument(String name, String namespaceUri)
     {
@@ -318,8 +286,8 @@ public class DomUtils
      * Creates a new Document object.
      *
      * @return the newly created Document object
-     * @throws ParserConfigurationException
-     *             if a DocumentBuilder cannot be created
+     * @throws IllegalArgumentException
+     *             if the document cannot be created
      */
     public static Document createDocument()
     {
