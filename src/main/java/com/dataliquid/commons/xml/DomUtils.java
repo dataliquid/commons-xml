@@ -987,7 +987,7 @@ public class DomUtils
      * @param <T>
      *            the expected type of the evaluation result
      * @return the result of the XPath expression evaluation as the expected type
-     * @throws XPathExpressionException
+     * @throws XpathException
      *             if the evaluation of the XPath expression fails
      */
     public static <T> T evaluateXpath(Node node, String xpath, QName expectedType, NamespaceContext... namespaceContext)
@@ -1015,7 +1015,7 @@ public class DomUtils
      * @param <T>
      *            the expected type of the evaluation result
      * @return the result of the XPath expression evaluation as the expected type
-     * @throws XPathExpressionException
+     * @throws XpathException
      *             if the evaluation of the XPath expression fails
      */
     public static <T> T evaluateXpath(Node node, XPathExpression xpath, QName expectedType)
