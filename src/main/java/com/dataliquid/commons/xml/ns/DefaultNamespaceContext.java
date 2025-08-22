@@ -63,8 +63,10 @@ public class DefaultNamespaceContext implements javax.xml.namespace.NamespaceCon
     /**
      * Get the namespace URI bound to the given prefix in the current scope.
      *
-     * @param prefix the prefix for which to retrieve the namespace URI
-     * @return the namespace URI bound to the given prefix, or the DEFAULT_NS if not found
+     * @param prefix
+     *            the prefix for which to retrieve the namespace URI
+     * @return the namespace URI bound to the given prefix, or the DEFAULT_NS if not
+     *         found
      */
     @Override
     public String getNamespaceURI(String prefix)
@@ -75,7 +77,8 @@ public class DefaultNamespaceContext implements javax.xml.namespace.NamespaceCon
     /**
      * Get the prefix bound to the given namespace URI in the current scope.
      *
-     * @param namespaceURI the namespace URI for which to retrieve the prefix
+     * @param namespaceURI
+     *            the namespace URI for which to retrieve the prefix
      * @return the prefix bound to the given namespace URI, or null if not found
      */
     @Override
@@ -88,7 +91,8 @@ public class DefaultNamespaceContext implements javax.xml.namespace.NamespaceCon
     /**
      * Get all prefixes bound to a namespace URI in the current scope.
      *
-     * @param namespaceURI the namespace URI for which to retrieve the prefixes
+     * @param namespaceURI
+     *            the namespace URI for which to retrieve the prefixes
      * @return an Iterator over all prefixes bound to the namespace URI
      */
     @Override

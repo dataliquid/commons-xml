@@ -68,12 +68,12 @@ import net.sf.saxon.TransformerFactoryImpl;
 import net.sf.saxon.xpath.XPathFactoryImpl;
 
 /**
- * This class provides utility methods for working with DOM (Document Object Model) in XML.
+ * This class provides utility methods for working with DOM (Document Object
+ * Model) in XML.
  */
 public class DomUtils
 {
 
-    
     private static DocumentBuilderFactory getDocumentBuilderFactory()
     {
         return getDocumentBuilderFactory(true);
@@ -87,13 +87,14 @@ public class DomUtils
     }
 
     /**
-     * Parses the given XML string and returns a Document object representing the parsed XML.
+     * Parses the given XML string and returns a Document object representing the
+     * parsed XML.
      *
-     * @param xml the XML string to parse
+     * @param xml
+     *            the XML string to parse
      * @return the parsed Document object
-     * @throws ParserConfigurationException if a DocumentBuilder cannot be created
-     * @throws IOException                  if an I/O error occurs
-     * @throws SAXException                 if any parse errors occur
+     * @throws IllegalArgumentException
+     *             if the XML cannot be parsed
      */
     public static Document parse(String xml)
     {
@@ -101,14 +102,16 @@ public class DomUtils
     }
 
     /**
-     * Parses the given XML string and returns a Document object representing the parsed XML.
+     * Parses the given XML string and returns a Document object representing the
+     * parsed XML.
      *
-     * @param xml            the XML string to parse
-     * @param namespaceAware a boolean indicating whether the parser should be namespace aware
+     * @param xml
+     *            the XML string to parse
+     * @param namespaceAware
+     *            a boolean indicating whether the parser should be namespace aware
      * @return the parsed Document object
-     * @throws ParserConfigurationException if a DocumentBuilder cannot be created
-     * @throws IOException                  if an I/O error occurs
-     * @throws SAXException                 if any parse errors occur
+     * @throws IllegalArgumentException
+     *             if the XML cannot be parsed
      */
     public static Document parse(String xml, boolean namespaceAware)
     {
@@ -123,14 +126,16 @@ public class DomUtils
     }
 
     /**
-     * Parses the XML file denoted by the given File object and returns a Document object representing the parsed XML.
+     * Parses the XML file denoted by the given File object and returns a Document
+     * object representing the parsed XML.
      *
-     * @param file the XML file to parse
+     * @param file
+     *            the XML file to parse
      * @return the parsed Document object
-     * @throws FileNotFoundException         if the specified file does not exist
-     * @throws ParserConfigurationException if a DocumentBuilder cannot be created
-     * @throws IOException                  if an I/O error occurs
-     * @throws SAXException                 if any parse errors occur
+     * @throws FileNotFoundException
+     *             if the specified file does not exist
+     * @throws IllegalArgumentException
+     *             if the XML cannot be parsed
      */
     public static Document parse(File file) throws FileNotFoundException
     {
@@ -138,15 +143,18 @@ public class DomUtils
     }
 
     /**
-     * Parses the XML file denoted by the given File object and returns a Document object representing the parsed XML.
+     * Parses the XML file denoted by the given File object and returns a Document
+     * object representing the parsed XML.
      *
-     * @param file            the XML file to parse
-     * @param namespaceAware  a boolean indicating whether the parser should be namespace aware
+     * @param file
+     *            the XML file to parse
+     * @param namespaceAware
+     *            a boolean indicating whether the parser should be namespace aware
      * @return the parsed Document object
-     * @throws FileNotFoundException         if the specified file does not exist
-     * @throws ParserConfigurationException if a DocumentBuilder cannot be created
-     * @throws IOException                  if an I/O error occurs
-     * @throws SAXException                 if any parse errors occur
+     * @throws FileNotFoundException
+     *             if the specified file does not exist
+     * @throws IllegalArgumentException
+     *             if the XML cannot be parsed
      */
     public static Document parse(File file, boolean namespaceAware) throws FileNotFoundException
     {
@@ -154,13 +162,14 @@ public class DomUtils
     }
 
     /**
-     * Parses the XML data from the given InputStream and returns a Document object representing the parsed XML.
+     * Parses the XML data from the given InputStream and returns a Document object
+     * representing the parsed XML.
      *
-     * @param inputStream the InputStream containing the XML data to parse
+     * @param inputStream
+     *            the InputStream containing the XML data to parse
      * @return the parsed Document object
-     * @throws ParserConfigurationException if a DocumentBuilder cannot be created
-     * @throws IOException                  if an I/O error occurs
-     * @throws SAXException                 if any parse errors occur
+     * @throws IllegalArgumentException
+     *             if the XML cannot be parsed
      */
     public static Document parse(InputStream inputStream)
     {
@@ -168,14 +177,16 @@ public class DomUtils
     }
 
     /**
-     * Parses the XML data from the given InputStream and returns a Document object representing the parsed XML.
+     * Parses the XML data from the given InputStream and returns a Document object
+     * representing the parsed XML.
      *
-     * @param inputStream    the InputStream containing the XML data to parse
-     * @param namespaceAware a boolean indicating whether the parser should be namespace aware
+     * @param inputStream
+     *            the InputStream containing the XML data to parse
+     * @param namespaceAware
+     *            a boolean indicating whether the parser should be namespace aware
      * @return the parsed Document object
-     * @throws ParserConfigurationException if a DocumentBuilder cannot be created
-     * @throws IOException                  if an I/O error occurs
-     * @throws SAXException                 if any parse errors occur
+     * @throws IllegalArgumentException
+     *             if the XML cannot be parsed
      */
     public static Document parse(InputStream inputStream, boolean namespaceAware)
     {
@@ -193,13 +204,14 @@ public class DomUtils
     }
 
     /**
-     * Parses the XML resource with the given name and returns a Document object representing the parsed XML.
+     * Parses the XML resource with the given name and returns a Document object
+     * representing the parsed XML.
      *
-     * @param name the name of the XML resource to parse
+     * @param name
+     *            the name of the XML resource to parse
      * @return the parsed Document object
-     * @throws ParserConfigurationException if a DocumentBuilder cannot be created
-     * @throws IOException                  if an I/O error occurs
-     * @throws SAXException                 if any parse errors occur
+     * @throws IllegalArgumentException
+     *             if the resource cannot be found or parsed
      */
     public static Document parseResource(String name)
     {
@@ -207,14 +219,16 @@ public class DomUtils
     }
 
     /**
-     * Parses the XML resource with the given name and returns a Document object representing the parsed XML.
+     * Parses the XML resource with the given name and returns a Document object
+     * representing the parsed XML.
      *
-     * @param name            the name of the XML resource to parse
-     * @param namespaceAware  a boolean indicating whether the parser should be namespace aware
+     * @param name
+     *            the name of the XML resource to parse
+     * @param namespaceAware
+     *            a boolean indicating whether the parser should be namespace aware
      * @return the parsed Document object
-     * @throws ParserConfigurationException if a DocumentBuilder cannot be created
-     * @throws IOException                  if an I/O error occurs
-     * @throws SAXException                 if any parse errors occur
+     * @throws IllegalArgumentException
+     *             if the resource cannot be found or parsed
      */
     public static Document parseResource(String name, boolean namespaceAware)
     {
@@ -231,9 +245,11 @@ public class DomUtils
     /**
      * Creates a new Document object with the specified document element name.
      *
-     * @param name the name of the document element
+     * @param name
+     *            the name of the document element
      * @return the newly created Document object
-     * @throws ParserConfigurationException if a DocumentBuilder cannot be created
+     * @throws IllegalArgumentException
+     *             if the document cannot be created
      */
     public static Document createDocument(String name)
     {
@@ -241,12 +257,16 @@ public class DomUtils
     }
 
     /**
-     * Creates a new Document object with the specified document element name and namespace URI.
+     * Creates a new Document object with the specified document element name and
+     * namespace URI.
      *
-     * @param name         the name of the document element
-     * @param namespaceUri the namespace URI of the document element
+     * @param name
+     *            the name of the document element
+     * @param namespaceUri
+     *            the namespace URI of the document element
      * @return the newly created Document object
-     * @throws ParserConfigurationException if a DocumentBuilder cannot be created
+     * @throws IllegalArgumentException
+     *             if the document cannot be created
      */
     public static Document createDocument(String name, String namespaceUri)
     {
@@ -266,7 +286,8 @@ public class DomUtils
      * Creates a new Document object.
      *
      * @return the newly created Document object
-     * @throws ParserConfigurationException if a DocumentBuilder cannot be created
+     * @throws IllegalArgumentException
+     *             if the document cannot be created
      */
     public static Document createDocument()
     {
@@ -288,9 +309,11 @@ public class DomUtils
     /**
      * Creates a new Document object with the specified document element.
      *
-     * @param documentElement the document element node to set as the root of the document
+     * @param documentElement
+     *            the document element node to set as the root of the document
      * @return the newly created Document object
-     * @throws ParserConfigurationException if a DocumentBuilder cannot be created
+     * @throws IllegalArgumentException
+     *             if the document cannot be created
      */
     public static Document createDocument(Node documentElement)
     {
@@ -301,11 +324,15 @@ public class DomUtils
     }
 
     /**
-     * Creates a new Element with the specified name and namespace URI in the given Document.
+     * Creates a new Element with the specified name and namespace URI in the given
+     * Document.
      *
-     * @param doc          the Document in which to create the Element
-     * @param name         the name of the Element
-     * @param namespaceURI the namespace URI of the Element
+     * @param doc
+     *            the Document in which to create the Element
+     * @param name
+     *            the name of the Element
+     * @param namespaceURI
+     *            the namespace URI of the Element
      * @return the newly created Element
      */
     public static Element createElement(Document doc, String name, String namespaceURI)
@@ -325,8 +352,10 @@ public class DomUtils
     /**
      * Appends the specified Element as a child to the given parent Node.
      *
-     * @param parent the parent Node to which the Element should be appended
-     * @param child  the Element to be appended as a child
+     * @param parent
+     *            the parent Node to which the Element should be appended
+     * @param child
+     *            the Element to be appended as a child
      * @return the appended Element
      */
     public static Element appendElement(Node parent, Element child)
@@ -338,11 +367,15 @@ public class DomUtils
     }
 
     /**
-     * Inserts the specified Element into the given parent Node in a specific order based on the provided list of node names.
+     * Inserts the specified Element into the given parent Node in a specific order
+     * based on the provided list of node names.
      *
-     * @param parent           the parent Node into which the Element should be inserted
-     * @param element          the Element to be inserted
-     * @param orderedNodeNames the list of node names specifying the desired order of insertion
+     * @param parent
+     *            the parent Node into which the Element should be inserted
+     * @param element
+     *            the Element to be inserted
+     * @param orderedNodeNames
+     *            the list of node names specifying the desired order of insertion
      * @return the inserted Element
      */
     public static Element insertElement(Node parent, Element element, List<String> orderedNodeNames)
@@ -355,8 +388,11 @@ public class DomUtils
     /**
      * Inserts the specified Element as the first child of the given parent Node.
      *
-     * @param parent the parent Node into which the Element should be inserted as the first child
-     * @param child  the Element to be inserted as the first child
+     * @param parent
+     *            the parent Node into which the Element should be inserted as the
+     *            first child
+     * @param child
+     *            the Element to be inserted as the first child
      * @return the inserted Element
      */
     public static Element insertElementAsFirst(Node parent, Element child)
@@ -375,8 +411,10 @@ public class DomUtils
     /**
      * Inserts the specified Element before the given Node.
      *
-     * @param node    the Node before which the Element should be inserted
-     * @param element the Element to be inserted
+     * @param node
+     *            the Node before which the Element should be inserted
+     * @param element
+     *            the Element to be inserted
      * @return the inserted Element
      */
     public static Element insertElementBefore(Node node, Element element)
@@ -390,8 +428,10 @@ public class DomUtils
     /**
      * Inserts the specified Element after the given Node.
      *
-     * @param node    the Node after which the Element should be inserted
-     * @param element the Element to be inserted
+     * @param node
+     *            the Node after which the Element should be inserted
+     * @param element
+     *            the Element to be inserted
      * @return the inserted Element
      */
     public static Element insertElementAfter(Node node, Element element)
@@ -413,8 +453,10 @@ public class DomUtils
     /**
      * Selects the Element that appears immediately before the given Node.
      *
-     * @param node the Node for which to select the preceding Element
-     * @return the Element appearing before the given Node, or null if not found or if the preceding sibling is not an Element
+     * @param node
+     *            the Node for which to select the preceding Element
+     * @return the Element appearing before the given Node, or null if not found or
+     *         if the preceding sibling is not an Element
      */
     public static Element selectElementBefore(Node node)
     {
@@ -429,8 +471,10 @@ public class DomUtils
     /**
      * Selects the Element that appears immediately after the given Node.
      *
-     * @param node the Node for which to select the succeeding Element
-     * @return the Element appearing after the given Node, or null if not found or if the succeeding sibling is not an Element
+     * @param node
+     *            the Node for which to select the succeeding Element
+     * @return the Element appearing after the given Node, or null if not found or
+     *         if the succeeding sibling is not an Element
      */
     public static Element selectElementAfter(Node node)
     {
@@ -443,11 +487,14 @@ public class DomUtils
     }
 
     /**
-     * Inserts the specified Element into the given parent Node by squeezing it in between the existing child elements.
-     * The new Element will be inserted in the correct order based on its position relative to the existing child elements.
+     * Inserts the specified Element into the given parent Node by squeezing it in
+     * between the existing child elements. The new Element will be inserted in the
+     * correct order based on its position relative to the existing child elements.
      *
-     * @param parent  the parent Node into which the Element should be inserted
-     * @param element the Element to be squeezed in
+     * @param parent
+     *            the parent Node into which the Element should be inserted
+     * @param element
+     *            the Element to be squeezed in
      * @return the inserted Element
      */
     public static Element squeezeInElement(Node parent, Element element)
@@ -476,7 +523,8 @@ public class DomUtils
     /**
      * Deletes the specified Node from its parent.
      *
-     * @param node the Node to be deleted
+     * @param node
+     *            the Node to be deleted
      */
     public static void delete(Node node)
     {
@@ -486,7 +534,8 @@ public class DomUtils
     /**
      * Deletes the specified list of Nodes from their respective parents.
      *
-     * @param nodes the list of Nodes to be deleted
+     * @param nodes
+     *            the list of Nodes to be deleted
      */
     public static void delete(List<Node> nodes)
     {
@@ -497,12 +546,19 @@ public class DomUtils
     }
 
     /**
-     * Deletes the Nodes matching the given XPath expression from the specified Node.
+     * Deletes the Nodes matching the given XPath expression from the specified
+     * Node.
      *
-     * @param node             the Node from which to delete matching Nodes
-     * @param xpath            the XPath expression to select Nodes for deletion
-     * @param removeWhitespace a boolean indicating whether to remove whitespace-only Text nodes during deletion
-     * @param namespaceContext optional NamespaceContext for resolving namespace prefixes in the XPath expression
+     * @param node
+     *            the Node from which to delete matching Nodes
+     * @param xpath
+     *            the XPath expression to select Nodes for deletion
+     * @param removeWhitespace
+     *            a boolean indicating whether to remove whitespace-only Text nodes
+     *            during deletion
+     * @param namespaceContext
+     *            optional NamespaceContext for resolving namespace prefixes in the
+     *            XPath expression
      */
     public static void delete(Node node, String xpath, boolean removeWhitespace, NamespaceContext... namespaceContext)
     {
@@ -511,11 +567,16 @@ public class DomUtils
     }
 
     /**
-     * Deletes the Nodes matching the given XPath expression from the specified Node.
+     * Deletes the Nodes matching the given XPath expression from the specified
+     * Node.
      *
-     * @param node             the Node from which to delete matching Nodes
-     * @param xpath            the XPath expression to select Nodes for deletion
-     * @param namespaceContext optional NamespaceContext for resolving namespace prefixes in the XPath expression
+     * @param node
+     *            the Node from which to delete matching Nodes
+     * @param xpath
+     *            the XPath expression to select Nodes for deletion
+     * @param namespaceContext
+     *            optional NamespaceContext for resolving namespace prefixes in the
+     *            XPath expression
      */
     public static void delete(Node node, String xpath, NamespaceContext... namespaceContext)
     {
@@ -523,11 +584,16 @@ public class DomUtils
     }
 
     /**
-     * Checks if Nodes matching the given XPath expression exist in the specified Node.
+     * Checks if Nodes matching the given XPath expression exist in the specified
+     * Node.
      *
-     * @param node             the Node to check for matching Nodes
-     * @param xpath            the XPath expression to select Nodes
-     * @param namespaceContext optional NamespaceContext for resolving namespace prefixes in the XPath expression
+     * @param node
+     *            the Node to check for matching Nodes
+     * @param xpath
+     *            the XPath expression to select Nodes
+     * @param namespaceContext
+     *            optional NamespaceContext for resolving namespace prefixes in the
+     *            XPath expression
      * @return true if matching Nodes exist, false otherwise
      */
     public static boolean exists(Node node, String xpath, NamespaceContext... namespaceContext)
@@ -536,12 +602,18 @@ public class DomUtils
     }
 
     /**
-     * Selects a single Node matching the given XPath expression from the specified Node.
+     * Selects a single Node matching the given XPath expression from the specified
+     * Node.
      *
-     * @param node             the Node from which to select a matching Node
-     * @param xpath            the XPath expression to select a Node
-     * @param namespaceContext optional NamespaceContext for resolving namespace prefixes in the XPath expression
-     * @param <T>              the type of Node to be selected
+     * @param node
+     *            the Node from which to select a matching Node
+     * @param xpath
+     *            the XPath expression to select a Node
+     * @param namespaceContext
+     *            optional NamespaceContext for resolving namespace prefixes in the
+     *            XPath expression
+     * @param <T>
+     *            the type of Node to be selected
      * @return the selected Node, or null if no match is found
      */
     public static <T extends Node> T selectNode(Node node, String xpath, NamespaceContext... namespaceContext)
@@ -560,11 +632,16 @@ public class DomUtils
     }
 
     /**
-     * Adds a namespace declaration to the specified Element using the given alias and NamespaceContext.
+     * Adds a namespace declaration to the specified Element using the given alias
+     * and NamespaceContext.
      *
-     * @param element the Element to which the namespace declaration should be added
-     * @param alias   the namespace alias to be used in the declaration
-     * @param nsc     the NamespaceContext providing the namespace URI for the given alias
+     * @param element
+     *            the Element to which the namespace declaration should be added
+     * @param alias
+     *            the namespace alias to be used in the declaration
+     * @param nsc
+     *            the NamespaceContext providing the namespace URI for the given
+     *            alias
      * @return the modified Element with the added namespace declaration
      */
     public static Element addNamespace(Element element, String alias, NamespaceContext nsc)
@@ -574,11 +651,15 @@ public class DomUtils
     }
 
     /**
-     * Adds a namespace declaration to the specified Element using the given alias and URI.
+     * Adds a namespace declaration to the specified Element using the given alias
+     * and URI.
      *
-     * @param element the Element to which the namespace declaration should be added
-     * @param alias   the namespace alias to be used in the declaration
-     * @param uri     the namespace URI to be associated with the alias
+     * @param element
+     *            the Element to which the namespace declaration should be added
+     * @param alias
+     *            the namespace alias to be used in the declaration
+     * @param uri
+     *            the namespace URI to be associated with the alias
      * @return the modified Element with the added namespace declaration
      */
     public static Element addNamespace(Element element, String alias, String uri)
@@ -588,11 +669,15 @@ public class DomUtils
     }
 
     /**
-     * Selects a single Node using the given XPathExpression from the specified Node.
+     * Selects a single Node using the given XPathExpression from the specified
+     * Node.
      *
-     * @param node  the Node from which to select a matching Node
-     * @param xpath the XPathExpression to select a Node
-     * @param <T>   the type of Node to be selected
+     * @param node
+     *            the Node from which to select a matching Node
+     * @param xpath
+     *            the XPathExpression to select a Node
+     * @param <T>
+     *            the type of Node to be selected
      * @return the selected Node, or null if no match is found
      */
     public static <T extends Node> T selectNode(Node node, XPathExpression xpath)
@@ -611,14 +696,20 @@ public class DomUtils
     }
 
     /**
-     * Iterates over the Nodes matching the given XPath expression in the specified Node and applies a NodeProcessor
-     * to each matching Node.
+     * Iterates over the Nodes matching the given XPath expression in the specified
+     * Node and applies a NodeProcessor to each matching Node.
      *
-     * @param node             the Node from which to iterate over matching Nodes
-     * @param xPath            the XPath expression to select Nodes for iteration
-     * @param nodeProcessor    the NodeProcessor to apply to each matching Node
-     * @param namespaceContext optional NamespaceContext for resolving namespace prefixes in the XPath expression
-     * @param <T>              the type of objects returned by the NodeProcessor
+     * @param node
+     *            the Node from which to iterate over matching Nodes
+     * @param xPath
+     *            the XPath expression to select Nodes for iteration
+     * @param nodeProcessor
+     *            the NodeProcessor to apply to each matching Node
+     * @param namespaceContext
+     *            optional NamespaceContext for resolving namespace prefixes in the
+     *            XPath expression
+     * @param <T>
+     *            the type of objects returned by the NodeProcessor
      * @return a List of objects generated by the NodeProcessor
      */
     public static <T> List<T> iterate(Node node, String xPath, NodeProcessor<T> nodeProcessor, NamespaceContext... namespaceContext)
@@ -639,15 +730,24 @@ public class DomUtils
     }
 
     /**
-     * Iterates over the Nodes matching the given XPath expression in the specified Node and applies a NodeProcessorParameterized
-     * to each matching Node, passing an additional parameter.
+     * Iterates over the Nodes matching the given XPath expression in the specified
+     * Node and applies a NodeProcessorParameterized to each matching Node, passing
+     * an additional parameter.
      *
-     * @param node             the Node from which to iterate over matching Nodes
-     * @param xPath            the XPath expression to select Nodes for iteration
-     * @param nodeProcessor    the NodeProcessorParameterized to apply to each matching Node
-     * @param param            the additional parameter to be passed to the NodeProcessorParameterized
-     * @param namespaceContext optional NamespaceContext for resolving namespace prefixes in the XPath expression
-     * @param <T>              the type of object returned by the NodeProcessorParameterized
+     * @param node
+     *            the Node from which to iterate over matching Nodes
+     * @param xPath
+     *            the XPath expression to select Nodes for iteration
+     * @param nodeProcessor
+     *            the NodeProcessorParameterized to apply to each matching Node
+     * @param param
+     *            the additional parameter to be passed to the
+     *            NodeProcessorParameterized
+     * @param namespaceContext
+     *            optional NamespaceContext for resolving namespace prefixes in the
+     *            XPath expression
+     * @param <T>
+     *            the type of object returned by the NodeProcessorParameterized
      * @return the result of the NodeProcessorParameterized for each matching Node
      */
     public static <T> T iterate(Node node, String xPath, NodeProcessorParameterized<T> nodeProcessor, T param,
@@ -664,12 +764,18 @@ public class DomUtils
     }
 
     /**
-     * Selects a list of Nodes matching the given XPath expression from the specified Node.
+     * Selects a list of Nodes matching the given XPath expression from the
+     * specified Node.
      *
-     * @param node             the Node from which to select matching Nodes
-     * @param xpath            the XPath expression to select Nodes
-     * @param namespaceContext optional NamespaceContext for resolving namespace prefixes in the XPath expression
-     * @param <T>              the type of Node to be selected
+     * @param node
+     *            the Node from which to select matching Nodes
+     * @param xpath
+     *            the XPath expression to select Nodes
+     * @param namespaceContext
+     *            optional NamespaceContext for resolving namespace prefixes in the
+     *            XPath expression
+     * @param <T>
+     *            the type of Node to be selected
      * @return a list of Nodes matching the XPath expression
      */
     public static <T extends Node> List<T> selectNodes(Node node, String xpath, NamespaceContext... namespaceContext)
@@ -696,11 +802,15 @@ public class DomUtils
     }
 
     /**
-     * Selects a list of Nodes using the given XPathExpression from the specified Node.
+     * Selects a list of Nodes using the given XPathExpression from the specified
+     * Node.
      *
-     * @param node  the Node from which to select matching Nodes
-     * @param xpath the XPathExpression to select Nodes
-     * @param <T>   the type of Node to be selected
+     * @param node
+     *            the Node from which to select matching Nodes
+     * @param xpath
+     *            the XPathExpression to select Nodes
+     * @param <T>
+     *            the type of Node to be selected
      * @return a list of Nodes matching the XPath expression
      */
     public static <T extends Node> List<T> selectNodes(Node node, XPathExpression xpath)
@@ -717,11 +827,16 @@ public class DomUtils
     }
 
     /**
-     * Selects a list of String values from the Nodes matching the given XPath expression in the specified Node.
+     * Selects a list of String values from the Nodes matching the given XPath
+     * expression in the specified Node.
      *
-     * @param node             the Node from which to select matching Nodes
-     * @param xPath            the XPath expression to select Nodes
-     * @param namespaceContext optional NamespaceContext for resolving namespace prefixes in the XPath expression
+     * @param node
+     *            the Node from which to select matching Nodes
+     * @param xPath
+     *            the XPath expression to select Nodes
+     * @param namespaceContext
+     *            optional NamespaceContext for resolving namespace prefixes in the
+     *            XPath expression
      * @return a list of String values from the matching Nodes
      */
     public static List<String> selectStrings(Node node, String xPath, NamespaceContext... namespaceContext)
@@ -754,11 +869,16 @@ public class DomUtils
     }
 
     /**
-     * Selects a single String value from the Node matching the given XPath expression in the specified Node.
+     * Selects a single String value from the Node matching the given XPath
+     * expression in the specified Node.
      *
-     * @param node             the Node from which to select a matching Node
-     * @param xpath            the XPath expression to select a Node
-     * @param namespaceContext optional NamespaceContext for resolving namespace prefixes in the XPath expression
+     * @param node
+     *            the Node from which to select a matching Node
+     * @param xpath
+     *            the XPath expression to select a Node
+     * @param namespaceContext
+     *            optional NamespaceContext for resolving namespace prefixes in the
+     *            XPath expression
      * @return the selected String value, or null if no match is found
      */
     public static String selectString(Node node, String xpath, NamespaceContext... namespaceContext)
@@ -767,12 +887,18 @@ public class DomUtils
     }
 
     /**
-     * Selects a single Integer value from the Node matching the given XPath expression in the specified Node.
+     * Selects a single Integer value from the Node matching the given XPath
+     * expression in the specified Node.
      *
-     * @param node             the Node from which to select a matching Node
-     * @param xpath            the XPath expression to select a Node
-     * @param namespaceContext optional NamespaceContext for resolving namespace prefixes in the XPath expression
-     * @return the selected Integer value, or null if no match is found or the selected value is not a valid Integer
+     * @param node
+     *            the Node from which to select a matching Node
+     * @param xpath
+     *            the XPath expression to select a Node
+     * @param namespaceContext
+     *            optional NamespaceContext for resolving namespace prefixes in the
+     *            XPath expression
+     * @return the selected Integer value, or null if no match is found or the
+     *         selected value is not a valid Integer
      */
     public static Integer selectInteger(Node node, String xpath, NamespaceContext... namespaceContext)
     {
@@ -780,14 +906,22 @@ public class DomUtils
     }
 
     /**
-     * Selects a single Integer value from the Node matching the given XPath expression in the specified Node.
-     * If no match is found or the selected value is not a valid Integer, the defaultValue is returned.
+     * Selects a single Integer value from the Node matching the given XPath
+     * expression in the specified Node. If no match is found or the selected value
+     * is not a valid Integer, the defaultValue is returned.
      *
-     * @param node             the Node from which to select a matching Node
-     * @param xpath            the XPath expression to select a Node
-     * @param defaultValue     the default value to be returned if no match is found or the selected value is not a valid Integer
-     * @param namespaceContext optional NamespaceContext for resolving namespace prefixes in the XPath expression
-     * @return the selected Integer value, or the defaultValue if no match is found or the selected value is not a valid Integer
+     * @param node
+     *            the Node from which to select a matching Node
+     * @param xpath
+     *            the XPath expression to select a Node
+     * @param defaultValue
+     *            the default value to be returned if no match is found or the
+     *            selected value is not a valid Integer
+     * @param namespaceContext
+     *            optional NamespaceContext for resolving namespace prefixes in the
+     *            XPath expression
+     * @return the selected Integer value, or the defaultValue if no match is found
+     *         or the selected value is not a valid Integer
      */
     public static Integer selectInteger(Node node, String xpath, int defaultValue, NamespaceContext... namespaceContext)
     {
@@ -795,12 +929,18 @@ public class DomUtils
     }
 
     /**
-     * Selects a single Boolean value from the Node matching the given XPath expression in the specified Node.
+     * Selects a single Boolean value from the Node matching the given XPath
+     * expression in the specified Node.
      *
-     * @param node             the Node from which to select a matching Node
-     * @param xpath            the XPath expression to select a Node
-     * @param namespaceContext optional NamespaceContext for resolving namespace prefixes in the XPath expression
-     * @return the selected Boolean value, or null if no match is found or the selected value is not a valid Boolean
+     * @param node
+     *            the Node from which to select a matching Node
+     * @param xpath
+     *            the XPath expression to select a Node
+     * @param namespaceContext
+     *            optional NamespaceContext for resolving namespace prefixes in the
+     *            XPath expression
+     * @return the selected Boolean value, or null if no match is found or the
+     *         selected value is not a valid Boolean
      */
     public static Boolean selectBoolean(Node node, String xpath, NamespaceContext... namespaceContext)
     {
@@ -808,12 +948,17 @@ public class DomUtils
     }
 
     /**
-     * Creates an XPathExpression object from the given XPath expression and optional NamespaceContext.
+     * Creates an XPathExpression object from the given XPath expression and
+     * optional NamespaceContext.
      *
-     * @param xpath            the XPath expression
-     * @param namespaceContext optional NamespaceContext for resolving namespace prefixes in the XPath expression
+     * @param xpath
+     *            the XPath expression
+     * @param namespaceContext
+     *            optional NamespaceContext for resolving namespace prefixes in the
+     *            XPath expression
      * @return an XPathExpression object representing the compiled XPath expression
-     * @throws XPathExpressionException if the XPath expression compilation fails
+     * @throws XPathExpressionException
+     *             if the XPath expression compilation fails
      */
     public static XPathExpression createXPathExpression(String xpath, NamespaceContext... namespaceContext) throws XPathExpressionException
     {
@@ -827,15 +972,23 @@ public class DomUtils
     }
 
     /**
-     * Evaluates the XPath expression on the specified Node and returns the result of the evaluation as the expected type.
+     * Evaluates the XPath expression on the specified Node and returns the result
+     * of the evaluation as the expected type.
      *
-     * @param node             the Node on which to evaluate the XPath expression
-     * @param xpath            the XPath expression to evaluate
-     * @param expectedType     the expected type of the evaluation result
-     * @param namespaceContext optional NamespaceContext for resolving namespace prefixes in the XPath expression
-     * @param <T>              the expected type of the evaluation result
+     * @param node
+     *            the Node on which to evaluate the XPath expression
+     * @param xpath
+     *            the XPath expression to evaluate
+     * @param expectedType
+     *            the expected type of the evaluation result
+     * @param namespaceContext
+     *            optional NamespaceContext for resolving namespace prefixes in the
+     *            XPath expression
+     * @param <T>
+     *            the expected type of the evaluation result
      * @return the result of the XPath expression evaluation as the expected type
-     * @throws XPathExpressionException if the evaluation of the XPath expression fails
+     * @throws XpathException
+     *             if the evaluation of the XPath expression fails
      */
     public static <T> T evaluateXpath(Node node, String xpath, QName expectedType, NamespaceContext... namespaceContext)
     {
@@ -850,14 +1003,20 @@ public class DomUtils
     }
 
     /**
-     * Evaluates the provided XPathExpression on the specified Node and returns the result of the evaluation as the expected type.
+     * Evaluates the provided XPathExpression on the specified Node and returns the
+     * result of the evaluation as the expected type.
      *
-     * @param node          the Node on which to evaluate the XPath expression
-     * @param xpath         the pre-compiled XPathExpression to evaluate
-     * @param expectedType  the expected type of the evaluation result
-     * @param <T>           the expected type of the evaluation result
+     * @param node
+     *            the Node on which to evaluate the XPath expression
+     * @param xpath
+     *            the pre-compiled XPathExpression to evaluate
+     * @param expectedType
+     *            the expected type of the evaluation result
+     * @param <T>
+     *            the expected type of the evaluation result
      * @return the result of the XPath expression evaluation as the expected type
-     * @throws XPathExpressionException if the evaluation of the XPath expression fails
+     * @throws XpathException
+     *             if the evaluation of the XPath expression fails
      */
     public static <T> T evaluateXpath(Node node, XPathExpression xpath, QName expectedType)
     {
@@ -872,12 +1031,17 @@ public class DomUtils
     }
 
     /**
-     * Returns a list of children Nodes of the specified parent Node, filtered by the given nodeType.
+     * Returns a list of children Nodes of the specified parent Node, filtered by
+     * the given nodeType.
      *
-     * @param parent    the parent Node from which to retrieve children
-     * @param nodeType  the type of child Nodes to include in the list
-     * @param <T>       the type of Nodes to be included in the list
-     * @return a list of children Nodes of the specified parent Node, filtered by the given nodeType
+     * @param parent
+     *            the parent Node from which to retrieve children
+     * @param nodeType
+     *            the type of child Nodes to include in the list
+     * @param <T>
+     *            the type of Nodes to be included in the list
+     * @return a list of children Nodes of the specified parent Node, filtered by
+     *         the given nodeType
      */
     public static <T> List<T> children(Node parent, short nodeType)
     {
@@ -898,7 +1062,8 @@ public class DomUtils
     /**
      * Translates a NodeList into a List of Nodes.
      *
-     * @param nodeList the NodeList to be translated
+     * @param nodeList
+     *            the NodeList to be translated
      * @return a List of Nodes containing the same Nodes as the original NodeList
      */
     public static List<Node> translateListOfNodes(NodeList nodeList)
@@ -914,7 +1079,8 @@ public class DomUtils
     /**
      * Returns the owner Document of the specified Node.
      *
-     * @param node the Node for which to retrieve the owner Document
+     * @param node
+     *            the Node for which to retrieve the owner Document
      * @return the owner Document of the specified Node
      */
     public static Document getOwnerDocument(Node node)
@@ -937,9 +1103,12 @@ public class DomUtils
     /**
      * Imports the specified Node into the specified parent Node.
      *
-     * @param parent the parent Node into which to import the child Node
-     * @param child  the child Node to be imported
-     * @param <T>    the type of the imported Node
+     * @param parent
+     *            the parent Node into which to import the child Node
+     * @param child
+     *            the child Node to be imported
+     * @param <T>
+     *            the type of the imported Node
      * @return the imported Node of the specified type
      */
     public static <T> T importNode(Node parent, Node child)
@@ -952,9 +1121,12 @@ public class DomUtils
     /**
      * Enforces the specified node name on the given Node.
      *
-     * @param node     the Node on which to enforce the node name
-     * @param nodeName the desired node name to be enforced
-     * @throws IllegalArgumentException if the node name of the Node does not match the desired node name
+     * @param node
+     *            the Node on which to enforce the node name
+     * @param nodeName
+     *            the desired node name to be enforced
+     * @throws IllegalArgumentException
+     *             if the node name of the Node does not match the desired node name
      */
     public static void enforceNodeName(Node node, String nodeName)
     {
@@ -967,9 +1139,12 @@ public class DomUtils
     /**
      * Enforces that the specified nodes do not have mixed namespaces.
      *
-     * @param node1 the first Node to check for namespace mixing
-     * @param node2 the second Node to check for namespace mixing
-     * @throws IllegalArgumentException if the nodes have mixed namespaces
+     * @param node1
+     *            the first Node to check for namespace mixing
+     * @param node2
+     *            the second Node to check for namespace mixing
+     * @throws IllegalArgumentException
+     *             if the nodes have mixed namespaces
      */
     public static void enforceNoNamespaceMixes(Node node1, Node node2)
     {
@@ -982,8 +1157,10 @@ public class DomUtils
     /**
      * Checks if the given Node has the specified node name.
      *
-     * @param node     the Node to check for the node name
-     * @param nodeName the node name to compare against
+     * @param node
+     *            the Node to check for the node name
+     * @param nodeName
+     *            the node name to compare against
      * @return true if the Node has the specified node name, false otherwise
      */
     public static boolean isNodeName(Node node, String nodeName)
@@ -994,8 +1171,10 @@ public class DomUtils
     /**
      * Checks if the given Node has the specified attribute.
      *
-     * @param node           the Node to check for the attribute
-     * @param attributeName  the attribute name to check
+     * @param node
+     *            the Node to check for the attribute
+     * @param attributeName
+     *            the attribute name to check
      * @return true if the Node has the specified attribute, false otherwise
      */
     public static boolean nodeHasAttribute(Node node, String attributeName)
@@ -1014,7 +1193,8 @@ public class DomUtils
     /**
      * Retrieves the names of all attributes of the given Node.
      *
-     * @param node the Node from which to retrieve attribute names
+     * @param node
+     *            the Node from which to retrieve attribute names
      * @return a List of attribute names of the given Node
      */
     public static List<String> getAttributeNames(Node node)
@@ -1031,10 +1211,13 @@ public class DomUtils
     }
 
     /**
-     * Retrieves the value of the attribute with the specified name from the given Node.
+     * Retrieves the value of the attribute with the specified name from the given
+     * Node.
      *
-     * @param node the Node from which to retrieve the attribute value
-     * @param name the name of the attribute to retrieve
+     * @param node
+     *            the Node from which to retrieve the attribute value
+     * @param name
+     *            the name of the attribute to retrieve
      * @return the value of the attribute, or null if the attribute is not found
      */
     public static String getAttribute(Node node, String name)
@@ -1045,9 +1228,12 @@ public class DomUtils
     /**
      * Sets the value of the attribute with the specified name on the given Node.
      *
-     * @param node  the Node on which to set the attribute value
-     * @param name  the name of the attribute to set
-     * @param value the value to set for the attribute
+     * @param node
+     *            the Node on which to set the attribute value
+     * @param name
+     *            the name of the attribute to set
+     * @param value
+     *            the value to set for the attribute
      */
     public static void setAttribute(Node node, String name, String value)
     {
@@ -1057,7 +1243,8 @@ public class DomUtils
     /**
      * Converts the given Node to its XML representation as a String.
      *
-     * @param node the Node to convert to XML
+     * @param node
+     *            the Node to convert to XML
      * @return the XML representation of the Node as a String
      */
     public static String asXml(Node node)
@@ -1068,8 +1255,11 @@ public class DomUtils
     /**
      * Converts the given Node to its XML representation as a String.
      *
-     * @param node   the Node to convert to XML
-     * @param indent a boolean flag indicating whether to include indentation in the XML output
+     * @param node
+     *            the Node to convert to XML
+     * @param indent
+     *            a boolean flag indicating whether to include indentation in the
+     *            XML output
      * @return the XML representation of the Node as a String
      */
     public static String asXml(Node node, boolean indent)
@@ -1078,11 +1268,16 @@ public class DomUtils
     }
 
     /**
-     * Converts the given Node to its XML representation as a String, with additional formatting options provided by the properties map.
+     * Converts the given Node to its XML representation as a String, with
+     * additional formatting options provided by the properties map.
      *
-     * @param node       the Node to convert to XML
-     * @param indent     a boolean flag indicating whether to include indentation in the XML output
-     * @param properties a map of additional formatting options for the XML output
+     * @param node
+     *            the Node to convert to XML
+     * @param indent
+     *            a boolean flag indicating whether to include indentation in the
+     *            XML output
+     * @param properties
+     *            a map of additional formatting options for the XML output
      * @return the XML representation of the Node as a String
      */
     public static String asXml(Node node, boolean indent, Map<String, String> properties)
@@ -1105,14 +1300,15 @@ public class DomUtils
         StringWriter writer = new StringWriter();
         write(node, writer, outputProperties);
         String result = writer.toString();
-        
-        // Saxon 12+ adds a trailing newline when indenting is enabled, which wasn't present in Saxon 9.6
+
+        // Saxon 12+ adds a trailing newline when indenting is enabled, which wasn't
+        // present in Saxon 9.6
         // To maintain backward compatibility, we remove it if present
         if (indent && result.endsWith("\n"))
         {
             result = result.substring(0, result.length() - 1);
         }
-        
+
         return result;
 
     }
@@ -1120,7 +1316,8 @@ public class DomUtils
     /**
      * Creates an XML declaration string based on the provided output properties.
      *
-     * @param outputProperties the properties specifying the output format of the XML declaration
+     * @param outputProperties
+     *            the properties specifying the output format of the XML declaration
      * @return the XML declaration string
      */
     public static String createXMLDeclarationString(Properties outputProperties)
@@ -1154,12 +1351,17 @@ public class DomUtils
     }
 
     /**
-     * Writes the XML representation of the given Node to the specified Writer, with additional formatting options provided by the output properties.
+     * Writes the XML representation of the given Node to the specified Writer, with
+     * additional formatting options provided by the output properties.
      *
-     * @param node            the Node to write to XML
-     * @param writer          the Writer to which the XML should be written
-     * @param outputProperties the properties specifying the output format of the XML
-     * @throws IOException if an I/O error occurs while writing to the Writer
+     * @param node
+     *            the Node to write to XML
+     * @param writer
+     *            the Writer to which the XML should be written
+     * @param outputProperties
+     *            the properties specifying the output format of the XML
+     * @throws IllegalArgumentException
+     *             if the XML cannot be written
      */
     public static void write(Node node, Writer writer, Properties outputProperties)
     {
@@ -1206,9 +1408,12 @@ public class DomUtils
     /**
      * Selects a child Element of the specified parent Node with the given name.
      *
-     * @param parent the parent Node from which to select the child Element
-     * @param name   the name of the child Element to select
-     * @return the selected child Element, or null if no matching child Element is found
+     * @param parent
+     *            the parent Node from which to select the child Element
+     * @param name
+     *            the name of the child Element to select
+     * @return the selected child Element, or null if no matching child Element is
+     *         found
      */
     public static Element selectChild(Node parent, String name)
     {
@@ -1219,9 +1424,12 @@ public class DomUtils
     /**
      * Selects child Elements of the specified parent Node with the given name.
      *
-     * @param parent the parent Node from which to select the child Elements
-     * @param name   the name of the child Elements to select
-     * @return a List of selected child Elements, or an empty List if no matching child Elements are found
+     * @param parent
+     *            the parent Node from which to select the child Elements
+     * @param name
+     *            the name of the child Elements to select
+     * @return a List of selected child Elements, or an empty List if no matching
+     *         child Elements are found
      */
     public static List<Element> selectChildren(Node parent, String name)
     {
@@ -1241,8 +1449,10 @@ public class DomUtils
     /**
      * Selects all child Elements of the specified parent Node.
      *
-     * @param parent the parent Node from which to select the child Elements
-     * @return a List of all child Elements of the parent Node, or an empty List if there are no child Elements
+     * @param parent
+     *            the parent Node from which to select the child Elements
+     * @return a List of all child Elements of the parent Node, or an empty List if
+     *         there are no child Elements
      */
     public static List<Element> selectChildren(Node parent)
     {
@@ -1252,7 +1462,8 @@ public class DomUtils
     /**
      * Dumps the XML representation of the given Node to the console.
      *
-     * @param node the Node to dump
+     * @param node
+     *            the Node to dump
      */
     public static void dump(Node node)
     {
@@ -1262,7 +1473,8 @@ public class DomUtils
     /**
      * Checks if the given Node has a namespace.
      *
-     * @param node the Node to check for a namespace
+     * @param node
+     *            the Node to check for a namespace
      * @return true if the Node has a namespace, false otherwise
      */
     public static boolean hasNamespace(Node node)
@@ -1271,10 +1483,13 @@ public class DomUtils
     }
 
     /**
-     * Appends a Text node with the specified text content to the given element Node.
+     * Appends a Text node with the specified text content to the given element
+     * Node.
      *
-     * @param element      the element Node to which the Text node should be appended
-     * @param textContent  the text content of the Text node
+     * @param element
+     *            the element Node to which the Text node should be appended
+     * @param textContent
+     *            the text content of the Text node
      * @return the appended Text node
      */
     public static Text appendText(Node element, String textContent)
@@ -1284,10 +1499,13 @@ public class DomUtils
     }
 
     /**
-     * Appends a CDATASection node with the specified content to the given element Node.
+     * Appends a CDATASection node with the specified content to the given element
+     * Node.
      *
-     * @param element the element Node to which the CDATASection node should be appended
-     * @param content the content of the CDATASection
+     * @param element
+     *            the element Node to which the CDATASection node should be appended
+     * @param content
+     *            the content of the CDATASection
      * @return the appended CDATASection node
      */
     public static CDATASection appendCDATA(Node element, String content)
@@ -1297,10 +1515,13 @@ public class DomUtils
     }
 
     /**
-     * Appends a Comment node with the specified comment text to the given element Node.
+     * Appends a Comment node with the specified comment text to the given element
+     * Node.
      *
-     * @param element the element Node to which the Comment node should be appended
-     * @param comment the text of the Comment
+     * @param element
+     *            the element Node to which the Comment node should be appended
+     * @param comment
+     *            the text of the Comment
      * @return the appended Comment node
      */
     public static Comment appendComment(Node element, String comment)
@@ -1312,8 +1533,10 @@ public class DomUtils
     /**
      * Renames the given Node with the specified name.
      *
-     * @param node the Node to rename
-     * @param name the new name for the Node
+     * @param node
+     *            the Node to rename
+     * @param name
+     *            the new name for the Node
      * @return the renamed Node
      */
     public static Node renameNode(Node node, String name)
@@ -1324,9 +1547,12 @@ public class DomUtils
     /**
      * Renames the given Node with the specified namespace URI and name.
      *
-     * @param node         the Node to rename
-     * @param namespaceUri the new namespace URI for the Node
-     * @param name         the new name for the Node
+     * @param node
+     *            the Node to rename
+     * @param namespaceUri
+     *            the new namespace URI for the Node
+     * @param name
+     *            the new name for the Node
      * @return the renamed Node
      */
     public static Node renameNode(Node node, String namespaceUri, String name)
@@ -1335,11 +1561,15 @@ public class DomUtils
     }
 
     /**
-     * Renames all occurrences of elements or attributes with the specified name from the given Node and its descendants to the specified new name.
+     * Renames all occurrences of elements or attributes with the specified name
+     * from the given Node and its descendants to the specified new name.
      *
-     * @param node the Node from which to start renaming
-     * @param from the current name to be replaced
-     * @param to   the new name to replace with
+     * @param node
+     *            the Node from which to start renaming
+     * @param from
+     *            the current name to be replaced
+     * @param to
+     *            the new name to replace with
      */
     public static void renameAll(Node node, String from, String to)
     {
@@ -1356,7 +1586,8 @@ public class DomUtils
     /**
      * Selects the child Nodes of the specified Node.
      *
-     * @param node the Node from which to select the child Nodes
+     * @param node
+     *            the Node from which to select the child Nodes
      * @return a List of child Nodes
      */
     public static List<Node> selectChildNodes(Node node)
@@ -1367,7 +1598,8 @@ public class DomUtils
     /**
      * Checks if the given Node is an Element.
      *
-     * @param node the Node to check
+     * @param node
+     *            the Node to check
      * @return true if the Node is an Element, false otherwise
      */
     public static boolean isElement(Node node)
@@ -1378,7 +1610,8 @@ public class DomUtils
     /**
      * Checks if the given Node is a Text node.
      *
-     * @param node the Node to check
+     * @param node
+     *            the Node to check
      * @return true if the Node is a Text node, false otherwise
      */
     public static boolean isText(Node node)
@@ -1389,7 +1622,8 @@ public class DomUtils
     /**
      * Checks if the given Node is an Attribute node.
      *
-     * @param node the Node to check
+     * @param node
+     *            the Node to check
      * @return true if the Node is an Attribute node, false otherwise
      */
     public static boolean isAttribute(Node node)
@@ -1400,7 +1634,8 @@ public class DomUtils
     /**
      * Checks if the given Node is a CDATASection node.
      *
-     * @param node the Node to check
+     * @param node
+     *            the Node to check
      * @return true if the Node is a CDATASection node, false otherwise
      */
     public static boolean isCData(Node node)
@@ -1411,7 +1646,8 @@ public class DomUtils
     /**
      * Checks if the given Node is a Comment node.
      *
-     * @param node the Node to check
+     * @param node
+     *            the Node to check
      * @return true if the Node is a Comment node, false otherwise
      */
     public static boolean isComment(Node node)
@@ -1422,7 +1658,8 @@ public class DomUtils
     /**
      * Checks if the given Node is a Document node.
      *
-     * @param node the Node to check
+     * @param node
+     *            the Node to check
      * @return true if the Node is a Document node, false otherwise
      */
     public static boolean isDocument(Node node)
@@ -1433,8 +1670,10 @@ public class DomUtils
     /**
      * Checks if the given Node has the specified node type.
      *
-     * @param node the Node to check
-     * @param type the node type to compare against
+     * @param node
+     *            the Node to check
+     * @param type
+     *            the node type to compare against
      * @return true if the Node has the specified node type, false otherwise
      */
     public static boolean isType(Node node, short type)
@@ -1445,9 +1684,12 @@ public class DomUtils
     /**
      * Validates the specified Document against the given Schema.
      *
-     * @param doc    the Document to validate
-     * @param schema the Schema to validate against
-     * @return true if the Document is valid according to the Schema, false otherwise
+     * @param doc
+     *            the Document to validate
+     * @param schema
+     *            the Schema to validate against
+     * @return true if the Document is valid according to the Schema, false
+     *         otherwise
      */
     public static boolean validate(Document doc, Schema schema)
     {
@@ -1458,9 +1700,12 @@ public class DomUtils
     /**
      * Validates the specified XML string against the given Schema.
      *
-     * @param xml    the XML string to validate
-     * @param schema the Schema to validate against
-     * @return true if the XML string is valid according to the Schema, false otherwise
+     * @param xml
+     *            the XML string to validate
+     * @param schema
+     *            the Schema to validate against
+     * @return true if the XML string is valid according to the Schema, false
+     *         otherwise
      */
     public static boolean validate(String xml, Schema schema)
     {
@@ -1471,9 +1716,12 @@ public class DomUtils
     /**
      * Validates the specified XML source against the given Schema.
      *
-     * @param source the XML source to validate
-     * @param schema the Schema to validate against
-     * @return true if the XML source is valid according to the Schema, false otherwise
+     * @param source
+     *            the XML source to validate
+     * @param schema
+     *            the Schema to validate against
+     * @return true if the XML source is valid according to the Schema, false
+     *         otherwise
      */
     public static boolean validate(Source source, Schema schema)
     {
@@ -1493,12 +1741,17 @@ public class DomUtils
     }
 
     /**
-     * Selects the next Element from the ordered list of element names, based on the current element name.
+     * Selects the next Element from the ordered list of element names, based on the
+     * current element name.
      *
-     * @param parent              the parent Element from which to select the next Element
-     * @param orderedElementNames the ordered list of element names
-     * @param elementName         the current element name
-     * @return the next Element from the ordered list, or null if the current element is the last one
+     * @param parent
+     *            the parent Element from which to select the next Element
+     * @param orderedElementNames
+     *            the ordered list of element names
+     * @param elementName
+     *            the current element name
+     * @return the next Element from the ordered list, or null if the current
+     *         element is the last one
      */
     public static Element selectSuccessorElementFromOrder(Element parent, List<String> orderedElementNames, String elementName)
     {
@@ -1517,10 +1770,13 @@ public class DomUtils
     }
 
     /**
-     * Selects the predecessor elements from the ordered list of node names, based on the current node name.
+     * Selects the predecessor elements from the ordered list of node names, based
+     * on the current node name.
      *
-     * @param orderedNodeNames the ordered list of node names
-     * @param nodeName         the current node name
+     * @param orderedNodeNames
+     *            the ordered list of node names
+     * @param nodeName
+     *            the current node name
      * @return a Set of predecessor node names from the ordered list
      */
     public static Set<String> selectPredecessors(List<String> orderedNodeNames, String nodeName)
@@ -1540,8 +1796,10 @@ public class DomUtils
     /**
      * Combines multiple NamespaceContext objects into a single NamespaceContext.
      *
-     * @param namespaceContexts the array of NamespaceContext objects to combine
-     * @return a single NamespaceContext object that represents the combination of the provided NamespaceContext objects
+     * @param namespaceContexts
+     *            the array of NamespaceContext objects to combine
+     * @return a single NamespaceContext object that represents the combination of
+     *         the provided NamespaceContext objects
      */
     public static NamespaceContext fromNamespaceContextList(NamespaceContext... namespaceContexts)
     {
@@ -1560,7 +1818,8 @@ public class DomUtils
     /**
      * Creates a deep clone of the specified Element node.
      *
-     * @param element the Element node to clone
+     * @param element
+     *            the Element node to clone
      * @return a deep clone of the Element node
      */
     public static Element cloneElement(Element element)
@@ -1571,7 +1830,8 @@ public class DomUtils
     /**
      * Creates a deep clone of the specified Document.
      *
-     * @param doc the Document to clone
+     * @param doc
+     *            the Document to clone
      * @return a deep clone of the Document
      */
     public static Document cloneDocument(Document doc)
@@ -1582,7 +1842,8 @@ public class DomUtils
     /**
      * An interface for processing Nodes during iteration.
      *
-     * @param <T> the type of result returned by the processor
+     * @param <T>
+     *            the type of result returned by the processor
      */
     public interface NodeProcessor<T>
     {
@@ -1590,9 +1851,11 @@ public class DomUtils
     }
 
     /**
-     * An interface for processing Nodes during iteration, with an additional parameter.
+     * An interface for processing Nodes during iteration, with an additional
+     * parameter.
      *
-     * @param <T>   the type of result returned by the processor
+     * @param <T>
+     *            the type of result returned by the processor
      */
     public interface NodeProcessorParameterized<T>
     {
@@ -1602,8 +1865,10 @@ public class DomUtils
     /**
      * Copies the attributes from the source Element to the destination Element.
      *
-     * @param src  the source Element from which to copy attributes
-     * @param dest the destination Element to which attributes should be copied
+     * @param src
+     *            the source Element from which to copy attributes
+     * @param dest
+     *            the destination Element to which attributes should be copied
      * @return the destination Element with copied attributes
      */
     public static Element copyAttributes(Element src, Element dest)
@@ -1620,8 +1885,10 @@ public class DomUtils
     /**
      * Copies the children nodes from the source Element to the destination Element.
      *
-     * @param src  the source Element from which to copy children nodes
-     * @param dest the destination Element to which children nodes should be copied
+     * @param src
+     *            the source Element from which to copy children nodes
+     * @param dest
+     *            the destination Element to which children nodes should be copied
      * @return the destination Element with copied children nodes
      */
     public static Element copyChildren(Element src, Element dest)
@@ -1634,10 +1901,13 @@ public class DomUtils
     }
 
     /**
-     * Appends a new Text node with the specified text content to the given parent Element.
+     * Appends a new Text node with the specified text content to the given parent
+     * Element.
      *
-     * @param parent the parent Element to which the Text node should be appended
-     * @param text   the text content of the Text node
+     * @param parent
+     *            the parent Element to which the Text node should be appended
+     * @param text
+     *            the text content of the Text node
      * @return the appended Text node
      */
     public static Element appendTextNode(Element parent, String text)
