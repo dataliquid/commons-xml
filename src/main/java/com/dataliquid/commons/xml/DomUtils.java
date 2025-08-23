@@ -19,10 +19,13 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.nio.file.Files;
+import java.util.Locale;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -73,6 +76,10 @@ import net.sf.saxon.xpath.XPathFactoryImpl;
  */
 public class DomUtils
 {
+
+    private static final String YES = "yes";
+    private static final int SINGLE_RESULT = 1;
+    private static final int ZERO_RESULTS = 0;
 
     private static DocumentBuilderFactory getDocumentBuilderFactory()
     {
@@ -158,7 +165,16 @@ public class DomUtils
      */
     public static Document parse(File file, boolean namespaceAware) throws FileNotFoundException
     {
-        return parse(new FileInputStream(file), namespaceAware);
+        try
+        {
+            return parse(Files.newInputStream(file.toPath()), namespaceAware);
+        }
+        catch (IOException e)
+        {
+            FileNotFoundException fnfe = new FileNotFoundException("Cannot read file: " + file.getPath());
+            fnfe.initCause(e);
+            throw fnfe;
+        }
     }
 
     /**
@@ -503,13 +519,9 @@ public class DomUtils
         for (Node node : translateListOfNodes(parent.getChildNodes()))
         {
             short type = node.getNodeType();
-            switch (type)
+            if (type != Node.ATTRIBUTE_NODE)
             {
-            case Node.ATTRIBUTE_NODE:
-                break;
-            default:
                 childrenToMove.add(node);
-                break;
             }
         }
         Element result = appendElement(parent, element);
@@ -620,11 +632,11 @@ public class DomUtils
     {
         T result = null;
         List<T> nodes = selectNodes(node, xpath, namespaceContext);
-        if (nodes.size() == 1)
+        if (nodes.size() == SINGLE_RESULT)
         {
             result = nodes.get(0);
         }
-        else if (nodes.size() > 1)
+        else if (nodes.size() > SINGLE_RESULT)
         {
             throw new IllegalArgumentException("XPath result is more than 1 element - xpath: '" + xpath + "' size: " + nodes.size());
         }
@@ -684,11 +696,11 @@ public class DomUtils
     {
         T result = null;
         List<T> nodes = selectNodes(node, xpath);
-        if (nodes.size() == 1)
+        if (nodes.size() == SINGLE_RESULT)
         {
             result = nodes.get(0);
         }
-        else if (nodes.size() > 1)
+        else if (nodes.size() > SINGLE_RESULT)
         {
             throw new IllegalArgumentException("XPath result is more than 1 element - xpath: '" + xpath + "' size: " + nodes.size());
         }
@@ -1285,7 +1297,7 @@ public class DomUtils
         Properties outputProperties = new Properties();
         if (indent)
         {
-            outputProperties.setProperty(OutputKeys.INDENT, "yes");
+            outputProperties.setProperty(OutputKeys.INDENT, YES);
             outputProperties.setProperty("{http://xml.apache.org/xslt}indent-amount", "4");
         }
 
@@ -1325,7 +1337,7 @@ public class DomUtils
         String indentStr = outputProperties.getProperty(OutputKeys.INDENT, null);
         if (indentStr != null)
         {
-            if (!indentStr.trim().toLowerCase().equals("yes"))
+            if (!YES.equalsIgnoreCase(indentStr.trim()))
             {
                 return StringUtils.EMPTY;
             }
@@ -1338,7 +1350,7 @@ public class DomUtils
         String omitStr = outputProperties.getProperty(OutputKeys.OMIT_XML_DECLARATION, null);
         if (omitStr != null)
         {
-            if (!omitStr.trim().toLowerCase().equals("yes"))
+            if (!YES.equalsIgnoreCase(omitStr.trim()))
             {
                 return StringUtils.EMPTY;
             }
@@ -1418,7 +1430,7 @@ public class DomUtils
     public static Element selectChild(Node parent, String name)
     {
         List<Element> children = selectChildren(parent, name);
-        return (children.size() > 0) ? children.get(0) : null;
+        return (!children.isEmpty()) ? children.get(0) : null;
     }
 
     /**
@@ -1467,7 +1479,7 @@ public class DomUtils
      */
     public static void dump(Node node)
     {
-        System.out.println(DomUtils.asXml(node, true));
+        System.out.println(DomUtils.asXml(node, true)); // NOPMD - Intentional console output for debugging
     }
 
     /**
@@ -1725,7 +1737,7 @@ public class DomUtils
      */
     public static boolean validate(Source source, Schema schema)
     {
-        boolean result = false;
+        boolean result;
         Validator validator = schema.newValidator();
         try
         {
@@ -1803,12 +1815,12 @@ public class DomUtils
      */
     public static NamespaceContext fromNamespaceContextList(NamespaceContext... namespaceContexts)
     {
-        if (namespaceContexts.length == 0)
+        if (namespaceContexts.length == ZERO_RESULTS)
         {
             return null;
         }
 
-        if (namespaceContexts.length > 1)
+        if (namespaceContexts.length > SINGLE_RESULT)
         {
             throw new IllegalStateException("Number of NamespaceContext must not exceed 1");
         }
