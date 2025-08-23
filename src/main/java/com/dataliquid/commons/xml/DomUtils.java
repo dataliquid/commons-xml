@@ -70,16 +70,12 @@ import com.dataliquid.commons.xml.ns.DefaultNamespaceContext;
 import net.sf.saxon.TransformerFactoryImpl;
 import net.sf.saxon.xpath.XPathFactoryImpl;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * This class provides utility methods for working with DOM (Document Object
  * Model) in XML.
  */
 public class DomUtils
 {
-    private static final Logger log = LoggerFactory.getLogger(DomUtils.class);
 
     private static final String YES = "yes";
     private static final int SINGLE_RESULT = 1;
@@ -1485,10 +1481,8 @@ public class DomUtils
      */
     public static void dump(Node node)
     {
-        if (log.isDebugEnabled())
-        {
-            log.debug(DomUtils.asXml(node, true));
-        }
+        // This method is deprecated and does nothing.
+        // Use asXml(node, true) to get the XML representation as a String.
     }
 
     /**
