@@ -1481,8 +1481,7 @@ public class DomUtils
      */
     public static void dump(Node node)
     {
-        // This method is deprecated and does nothing.
-        // Use asXml(node, true) to get the XML representation as a String.
+        System.out.println(DomUtils.asXml(node, true)); // NOPMD - Intentional console output for debugging
     }
 
     /**
