@@ -79,9 +79,7 @@ public class DomUtils
 
     private static final String YES = "yes";
     private static final int SINGLE_RESULT = 1;
-    private static final int MORE_THAN_ONE_RESULT = 1;
     private static final int ZERO_RESULTS = 0;
-    private static final int SINGLE_NAMESPACE_CONTEXT = 1;
 
     private static DocumentBuilderFactory getDocumentBuilderFactory()
     {
@@ -638,7 +636,7 @@ public class DomUtils
         {
             result = nodes.get(0);
         }
-        else if (nodes.size() > MORE_THAN_ONE_RESULT)
+        else if (nodes.size() > SINGLE_RESULT)
         {
             throw new IllegalArgumentException("XPath result is more than 1 element - xpath: '" + xpath + "' size: " + nodes.size());
         }
@@ -702,7 +700,7 @@ public class DomUtils
         {
             result = nodes.get(0);
         }
-        else if (nodes.size() > MORE_THAN_ONE_RESULT)
+        else if (nodes.size() > SINGLE_RESULT)
         {
             throw new IllegalArgumentException("XPath result is more than 1 element - xpath: '" + xpath + "' size: " + nodes.size());
         }
@@ -1822,7 +1820,7 @@ public class DomUtils
             return null;
         }
 
-        if (namespaceContexts.length > SINGLE_NAMESPACE_CONTEXT)
+        if (namespaceContexts.length > SINGLE_RESULT)
         {
             throw new IllegalStateException("Number of NamespaceContext must not exceed 1");
         }
