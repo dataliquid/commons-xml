@@ -302,7 +302,7 @@ public class DomUtils
      * Creates a new Document object.
      *
      * @return the newly created Document object
-     * @throws IllegalArgumentException
+     * @throws IllegalStateException
      *             if the document cannot be created
      */
     public static Document createDocument()
@@ -328,8 +328,6 @@ public class DomUtils
      * @param documentElement
      *            the document element node to set as the root of the document
      * @return the newly created Document object
-     * @throws IllegalArgumentException
-     *             if the document cannot be created
      */
     public static Document createDocument(Node documentElement)
     {
@@ -739,8 +737,9 @@ public class DomUtils
      *            optional NamespaceContext for resolving namespace prefixes in the
      *            XPath expression
      * @param <T>
-     *            the type of object returned by the NodeProcessorParameterized
-     * @return the result of the NodeProcessorParameterized for each matching Node
+     *            the type of the parameter object passed to and returned by the
+     *            NodeProcessorParameterized
+     * @return the modified parameter object after processing all matching nodes
      */
     public static <T> T iterate(Node node, String xPath, NodeProcessorParameterized<T> nodeProcessor, T param,
             NamespaceContext... namespaceContext)
@@ -1352,7 +1351,7 @@ public class DomUtils
      *            the Writer to which the XML should be written
      * @param outputProperties
      *            the properties specifying the output format of the XML
-     * @throws IllegalArgumentException
+     * @throws RuntimeException
      *             if the XML cannot be written
      */
     public static void write(Node node, Writer writer, Properties outputProperties)
@@ -1452,7 +1451,8 @@ public class DomUtils
     }
 
     /**
-     * Dumps the XML representation of the given Node to the console.
+     * Dumps the XML representation of the given Node to the console for debugging
+     * purposes.
      *
      * @param node
      *            the Node to dump
