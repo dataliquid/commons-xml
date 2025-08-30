@@ -74,8 +74,8 @@ public class DefaultNamespaceContext implements javax.xml.namespace.NamespaceCon
      *
      * @param prefix
      *            the prefix for which to retrieve the namespace URI
-     * @return the namespace URI bound to the given prefix, or the DEFAULT_NS if not
-     *         found
+     * @return the namespace URI bound to the given prefix, or DEFAULT_NS if prefix
+     *         is empty/null, or null if the prefix is not found
      */
     @Override
     public String getNamespaceURI(String prefix)
