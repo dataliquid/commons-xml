@@ -512,7 +512,7 @@ public class DomUtilsTest
         Element rootElement = document.getDocumentElement();
 
         // When
-        DomUtils.delete(rootElement, "//element2", true);
+        DomUtils.delete(rootElement, "//element2");
 
         // Then
         XPath xpath = XPathFactory.newInstance().newXPath();
