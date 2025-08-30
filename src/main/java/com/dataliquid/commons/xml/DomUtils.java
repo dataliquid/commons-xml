@@ -576,23 +576,6 @@ public class DomUtils
     }
 
     /**
-     * Deletes the Nodes matching the given XPath expression from the specified
-     * Node.
-     *
-     * @param node
-     *            the Node from which to delete matching Nodes
-     * @param xpath
-     *            the XPath expression to select Nodes for deletion
-     * @param namespaceContext
-     *            optional NamespaceContext for resolving namespace prefixes in the
-     *            XPath expression
-     */
-    public static void delete(Node node, String xpath, NamespaceContext... namespaceContext)
-    {
-        delete(node, xpath, false, namespaceContext);
-    }
-
-    /**
      * Checks if Nodes matching the given XPath expression exist in the specified
      * Node.
      *
