@@ -20,8 +20,9 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * A default implementation of the NamespaceContext interface.
@@ -40,8 +41,8 @@ public class DefaultNamespaceContext implements javax.xml.namespace.NamespaceCon
 
     public static final String DEFAULT_NS = NAMESPACE_XMLNS;
 
-    private static final Map<String, String> alias = new HashMap<>();
-    private static final Map<String, Collection<String>> uri = new HashMap<>();
+    private static final Map<String, String> alias = new ConcurrentHashMap<>();
+    private static final Map<String, Collection<String>> uri = new ConcurrentHashMap<>();
 
     static
     {
@@ -50,21 +51,31 @@ public class DefaultNamespaceContext implements javax.xml.namespace.NamespaceCon
         alias.put(NAMESPACE_ALIAS_XMLNS, NAMESPACE_XMLNS);
         alias.put(NAMESPACE_ALIAS_XS, NAMESPACE_XS);
 
-        for (Map.Entry<String, String> entry : alias.entrySet())
-        {
-            if (!uri.containsKey(entry.getValue()))
-            {
-                uri.put(entry.getValue(), new ArrayList<String>());
-            }
-            uri.get(entry.getValue()).add(entry.getKey());
-        }
+        // Initialize the reverse mapping without instantiating objects in loops
+        Collection<String> htmlPrefixes = new ArrayList<>();
+        htmlPrefixes.add(NAMESPACE_ALIAS_HTML);
+        uri.put(NAMESPACE_HTML, htmlPrefixes);
+
+        Collection<String> xmlPrefixes = new ArrayList<>();
+        xmlPrefixes.add(NAMESPACE_ALIAS_XML);
+        uri.put(NAMESPACE_XML, xmlPrefixes);
+
+        Collection<String> xmlnsPrefixes = new ArrayList<>();
+        xmlnsPrefixes.add(NAMESPACE_ALIAS_XMLNS);
+        uri.put(NAMESPACE_XMLNS, xmlnsPrefixes);
+
+        Collection<String> xsPrefixes = new ArrayList<>();
+        xsPrefixes.add(NAMESPACE_ALIAS_XS);
+        uri.put(NAMESPACE_XS, xsPrefixes);
     }
 
     /**
      * Get the namespace URI bound to the given prefix in the current scope.
      *
-     * @param prefix the prefix for which to retrieve the namespace URI
-     * @return the namespace URI bound to the given prefix, or the DEFAULT_NS if not found
+     * @param prefix
+     *            the prefix for which to retrieve the namespace URI
+     * @return the namespace URI bound to the given prefix, or DEFAULT_NS if prefix
+     *         is empty/null, or null if the prefix is not found
      */
     @Override
     public String getNamespaceURI(String prefix)
@@ -75,7 +86,8 @@ public class DefaultNamespaceContext implements javax.xml.namespace.NamespaceCon
     /**
      * Get the prefix bound to the given namespace URI in the current scope.
      *
-     * @param namespaceURI the namespace URI for which to retrieve the prefix
+     * @param namespaceURI
+     *            the namespace URI for which to retrieve the prefix
      * @return the prefix bound to the given namespace URI, or null if not found
      */
     @Override
@@ -88,7 +100,8 @@ public class DefaultNamespaceContext implements javax.xml.namespace.NamespaceCon
     /**
      * Get all prefixes bound to a namespace URI in the current scope.
      *
-     * @param namespaceURI the namespace URI for which to retrieve the prefixes
+     * @param namespaceURI
+     *            the namespace URI for which to retrieve the prefixes
      * @return an Iterator over all prefixes bound to the namespace URI
      */
     @Override

@@ -20,11 +20,11 @@
 	<parent>
 		<groupId>com.dataliquid</groupId>
 		<artifactId>parent-oss</artifactId>
-		<version>2.1.0</version>
+		<version>2.3.1</version>
 	</parent>
 	<groupId>com.dataliquid</groupId>
 	<artifactId>commons-xml</artifactId>
-	<version>1.2.1</version>
+	<version>1.2.2</version>
 	<name>dataliquid :: Commons XML</name>
 
 	<organization>
@@ -50,15 +50,17 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>8</maven.compiler.source>
+		<maven.compiler.target>8</maven.compiler.target>
 		<xalan.version>2.7.3</xalan.version>
 		<saxon.version>12.8</saxon.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
-			<version>2.6</version>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.18.0</version>
 		</dependency>
 		<dependency>
 			<groupId>net.sf.saxon</groupId>
@@ -75,7 +77,7 @@
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter</artifactId>
-			<version>5.13.3</version>
+			<version>5.13.4</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -87,13 +89,20 @@
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
-			<version>2.19.0</version>
+			<version>2.20.0</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>net.revelc.code.formatter</groupId>
+				<artifactId>formatter-maven-plugin</artifactId>
+				<configuration>
+					<configFile>codestyles/traditional/java-formatter.xml</configFile>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>com.mycila</groupId>
 				<artifactId>license-maven-plugin</artifactId>
@@ -116,14 +125,6 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
