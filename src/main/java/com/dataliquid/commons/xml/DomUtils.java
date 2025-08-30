@@ -565,14 +565,11 @@ public class DomUtils
      *            the Node from which to delete matching Nodes
      * @param xpath
      *            the XPath expression to select Nodes for deletion
-     * @param removeWhitespace
-     *            a boolean indicating whether to remove whitespace-only Text nodes
-     *            during deletion
      * @param namespaceContext
      *            optional NamespaceContext for resolving namespace prefixes in the
      *            XPath expression
      */
-    public static void delete(Node node, String xpath, boolean removeWhitespace, NamespaceContext... namespaceContext)
+    public static void delete(Node node, String xpath, NamespaceContext... namespaceContext)
     {
         List<Node> nodes = selectNodes(node, xpath, namespaceContext);
         delete(nodes);
