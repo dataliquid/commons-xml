@@ -54,6 +54,7 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.w3c.dom.CDATASection;
 import org.w3c.dom.Comment;
@@ -1565,7 +1566,7 @@ public class DomUtils
      */
     public static void renameAll(Node node, String from, String to)
     {
-        if (StringUtils.equalsIgnoreCase(node.getNodeName(), from))
+        if (Strings.CI.equals(node.getNodeName(), from))
         {
             renameNode(node, to);
         }
