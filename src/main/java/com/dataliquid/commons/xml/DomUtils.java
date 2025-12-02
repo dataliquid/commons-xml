@@ -24,6 +24,7 @@ import java.io.InputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.Locale;
 import java.util.ArrayList;
@@ -125,7 +126,7 @@ public class DomUtils
     {
         try
         {
-            return parse(new ByteArrayInputStream(xml.getBytes()), namespaceAware);
+            return parse(new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8)), namespaceAware);
         }
         catch (Exception e)
         {
@@ -1359,37 +1360,33 @@ public class DomUtils
     {
         try
         {
-            synchronized (node)
+            StreamResult streamResult = new StreamResult(writer);
+            DOMSource domSource = new DOMSource(node);
+
+            TransformerFactory tf = new TransformerFactoryImpl();
+            Transformer serializer = tf.newTransformer();
+
+            if (outputProperties != null && outputProperties.getProperty(OutputKeys.INDENT, null) != null)
             {
-                StreamResult streamResult = new StreamResult(writer);
-                DOMSource domSource = new DOMSource(node);
-
-                TransformerFactory tf = new TransformerFactoryImpl();
-                Transformer serializer = tf.newTransformer();
-
-                if (outputProperties != null && outputProperties.getProperty(OutputKeys.INDENT, null) != null)
+                String xmlDecl = createXMLDeclarationString(outputProperties);
+                if (xmlDecl.length() > 0)
                 {
-                    String xmlDecl = createXMLDeclarationString(outputProperties);
-                    if (xmlDecl.length() > 0)
-                    {
-                        writer.write(xmlDecl);
-                        writer.write('\n');
+                    writer.write(xmlDecl);
+                    writer.write('\n');
 
-                        serializer.setOutputProperty("omit-xml-declaration", "yes");
-                    }
+                    serializer.setOutputProperty("omit-xml-declaration", "yes");
                 }
-
-                if (outputProperties != null)
-                {
-
-                    for (Object o : outputProperties.entrySet())
-                    {
-                        Map.Entry entry = (Map.Entry) o;
-                        serializer.setOutputProperty((String) entry.getKey(), (String) entry.getValue());
-                    }
-                }
-                serializer.transform(domSource, streamResult);
             }
+
+            if (outputProperties != null)
+            {
+                for (Object o : outputProperties.entrySet())
+                {
+                    Map.Entry entry = (Map.Entry) o;
+                    serializer.setOutputProperty((String) entry.getKey(), (String) entry.getValue());
+                }
+            }
+            serializer.transform(domSource, streamResult);
         }
         catch (Exception e)
         {
@@ -1838,6 +1835,7 @@ public class DomUtils
      * @param <T>
      *            the type of result returned by the processor
      */
+    @FunctionalInterface
     public interface NodeProcessor<T>
     {
         T process(Node node);
@@ -1850,6 +1848,7 @@ public class DomUtils
      * @param <T>
      *            the type of result returned by the processor
      */
+    @FunctionalInterface
     public interface NodeProcessorParameterized<T>
     {
         void process(Node node, T param);
