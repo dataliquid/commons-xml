@@ -1,7 +1,7 @@
 # commons-xml
 
 [![CI Build](https://github.com/dataliquid/commons-xml/actions/workflows/ci.yml/badge.svg)](https://github.com/dataliquid/commons-xml/actions/workflows/ci.yml)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.dataliquid/commons-xml/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.dataliquid/commons-xml)
+[![Maven Central](https://img.shields.io/maven-central/v/com.dataliquid/commons-xml.svg)](https://search.maven.org/artifact/com.dataliquid/commons-xml)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 A lightweight and efficient Java library for XML processing and manipulation. This library provides comprehensive utilities for parsing, creating, validating, and transforming XML documents with a focus on simplicity and performance.
